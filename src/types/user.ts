@@ -9,6 +9,10 @@ export const USER_STATUS = {
   notActive: "NOT_ACTIVE"
 } as const
 
+export type UserRoleType = (typeof ROLE)[keyof typeof ROLE]
+
+export type UserStatusType = (typeof USER_STATUS)[keyof typeof USER_STATUS]
+
 export type BaseUser = {
   name: string
   email: string
@@ -16,9 +20,9 @@ export type BaseUser = {
 
 export type User = BaseUser & {
   id: string
-  role: (typeof ROLE)[keyof typeof ROLE]
+  role: UserRoleType
   birthDate: Date | null
-  activeStatus: (typeof USER_STATUS)[keyof typeof USER_STATUS]
+  activeStatus: UserStatusType
   address: string | null
   phone: string | null
 }
@@ -41,4 +45,8 @@ export type ResetPassword = Pick<CreateUser, "password" | "comfirmPassword">
 export type UserLogin = {
   token: string
   user: User
+}
+
+export type UpdateRole = {
+  role: UserRoleType
 }
