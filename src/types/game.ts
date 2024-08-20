@@ -40,3 +40,7 @@ export type SingleGame = Omit<Game, "rating"> & {
   averageRating: number
   reviews: EmbeddedReview[]
 }
+
+export type Key = {
+  gameId: string
+}
