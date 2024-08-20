@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { Response } from '@/types'
 import axios, { AxiosResponse } from 'axios'
 import { ApiError } from './apiError';
