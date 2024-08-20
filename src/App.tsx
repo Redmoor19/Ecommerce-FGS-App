@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { Home } from "./pages/home"
-import { getSingleGame } from "./api/products"
+import { getSingleGame } from "./api/productApi"
 import { ApiError } from "./api/apiError"
 import { SingleGame } from "./types/game"
 

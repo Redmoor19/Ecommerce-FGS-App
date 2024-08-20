@@ -32,3 +32,8 @@ export type GameOrder = {
   game: Game
   quantity: number
 }
+
+export type PayOrder = {
+  orderId: string
+  isPayedSuccessfully: boolean
+}
