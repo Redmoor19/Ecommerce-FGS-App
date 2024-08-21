@@ -1,9 +1,9 @@
-import { BaseUser, CreateUser, ResetPassword, UpdatePassword, UserLogin } from "@/types/user"
+import { CreateUser, Credentials, ResetPassword, UpdatePassword, UserLogin } from "@/types/user"
 import api from "."
 
 export const signUp = (data: CreateUser): Promise<UserLogin> => api.post("/auth/signup", data)
 
-export const login = (data: BaseUser): Promise<UserLogin> => api.post("/auth/login", data)
+export const login = (data: Credentials): Promise<UserLogin> => api.post("/auth/login", data)
 
 export const forgotPassword = (email: string): Promise<void> =>
   api.post("/auth/forgot-password", {

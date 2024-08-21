@@ -29,7 +29,7 @@ export type User = BaseUser & {
 
 export type CreateUser = BaseUser & {
   password: string
-  comfirmPassword: string
+  confirmPassword: string
 }
 
 export type UpdateUser = Pick<User, "name" | "email" | "birthDate" | "address" | "phone">
@@ -40,7 +40,7 @@ export type UpdatePassword = {
   newPasswordConfirm: string
 }
 
-export type ResetPassword = Pick<CreateUser, "password" | "comfirmPassword">
+export type ResetPassword = Pick<CreateUser, "password" | "confirmPassword">
 
 export type UserLogin = {
   token: string
@@ -49,4 +49,9 @@ export type UserLogin = {
 
 export type UpdateRole = {
   role: UserRoleType
+}
+
+export type Credentials = {
+  email: string
+  password: string
 }

@@ -1,22 +1,22 @@
-import { useQuery } from "@tanstack/react-query"
-import { Home } from "./pages/home"
-import { getSingleGame } from "./api/productApi"
-import { ApiError } from "./api/apiError"
-import { SingleGame } from "./types/game"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HomePage, LoginPage, SignUpPage } from "./pages"
+import AuthLayout from "./components/AuthLayout"
+import { Toaster } from "./components/ui/toaster"
 
 function App() {
-  const { data, error, isLoading } = useQuery<SingleGame, ApiError>({
-    queryKey: ["203a5a4a-8deb-4c82-93e7-d7aafda23782"],
-    queryFn: () => getSingleGame("203a5a4a-8deb-4c82-93e7-d7aafda23782")
-  })
-
-  console.log(data)
-  console.log(error?.status)
-
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <main>
+      <Toaster />
+      <BrowserRouter>
+        <Routes>
+          <Route index path="/" element={<HomePage />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/login" element={<LoginPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </main>
   )
 }
 

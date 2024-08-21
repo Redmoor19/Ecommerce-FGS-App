@@ -19,7 +19,7 @@ const api = axios.create({
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token")
-  config.headers.Authorization = token ? `Bearer ${token}` : ""
+  config.headers.Authorization = token ? "Bearer " + token.replace(/"/g, "") : ""
   return config
 })
 
@@ -42,15 +42,5 @@ api.interceptors.response.use(
     return Promise.reject(new ApiError(message, status, error.response?.data, error))
   }
 )
-
-// use this to handle errors gracefully
-// api.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     if (error.response.status === 500) {
-//       throw new Error(error.response.data)
-//     }
-//   }
-// )
 
 export default api
