@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 const DashboardSidebar = () => {
   return (
-    <div>
+    <aside>
       <ul className="flex flex-col gap-3 px-5 py-16 border-r-[1px] h-full">
         <li>
           <NavLink to="/dashboard/users">Users</NavLink>
@@ -14,7 +14,7 @@ const DashboardSidebar = () => {
           <NavLink to="/dashboard/orders">Orders</NavLink>
         </li>
       </ul>
-    </div>
+    </aside>
   )
 }
 

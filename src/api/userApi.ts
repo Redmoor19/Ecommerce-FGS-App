@@ -1,8 +1,8 @@
-import { CreateUser, UpdateRole, UpdateUser, User } from "@/types/user"
+import { CreateUser, UpdateUser, User, UserRoleType } from "@/types/user"
 import api from "."
 import { Game } from "@/types/game"
 
-export const getUsers = (): Promise<User> => api.get("/users")
+export const getUsers = (): Promise<User[]> => api.get("/users")
 
 export const getSingleUser = (userId: string): Promise<User> => api.get(`/users/${userId}`)
 
@@ -13,10 +13,10 @@ export const updateUser = (userId: string, data: UpdateUser): Promise<User> =>
 
 export const deleteUser = (userId: string) => api.delete(`/users/${userId}`)
 
-export const updateUserRole = (userId: string, data: UpdateRole) =>
-  api.patch(`/users/role/${userId}`, data)
+export const updateUserRole = (userId: string, data: UserRoleType) =>
+  api.patch(`/users/role/${userId}`, { role: data })
 
-export const activateUser = (userId: string) => api.patch(`/users/activate/${userId}`)
+export const activateUser = (userId: string) => api.post(`/users/activate/${userId}`)
 
 export const getCurrentUser = (): Promise<User> => api.get("/users/me")
 

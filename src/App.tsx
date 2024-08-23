@@ -1,9 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import { HomePage, LoginPage, SignUpPage } from "./pages"
+import {
+  Dashboard,
+  GamesDashboard,
+  HomePage,
+  LoginPage,
+  OrdersDashboard,
+  SignUpPage,
+  UsersDashboard
+} from "./pages"
 import AuthLayout from "./components/AuthLayout"
 import { Toaster } from "./components/ui/toaster"
 import AppLayout from "./components/AppLayout"
-import DashboardLayout from "./features/dashboard/DashboardLayout"
 
 function App() {
   return (
@@ -17,11 +24,11 @@ function App() {
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/login" element={<LoginPage />} />
             </Route>
-            <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Dashboard />}>
               <Route index element={<Navigate to="/dashboard/users" replace />} />
-              <Route path="users" />
-              <Route path="games" />
-              <Route path="orders" />
+              <Route path="users" element={<UsersDashboard />} />
+              <Route path="games" element={<GamesDashboard />} />
+              <Route path="orders" element={<OrdersDashboard />} />
             </Route>
           </Routes>
         </AppLayout>
