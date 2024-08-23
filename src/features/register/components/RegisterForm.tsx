@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import useRegister from "../hooks/useRegister"
+import { useNavigate } from "react-router-dom"
 
 const registerSchema: z.ZodType<CreateUser> = z
   .object({
@@ -29,11 +31,10 @@ const registerSchema: z.ZodType<CreateUser> = z
     message: "Password confirmation should match the password"
   })
 
-type RegisterFormProps = {
-  handleSubmit: (data: CreateUser) => void
-}
+const RegisterForm = () => {
+  const { mutate, isPending } = useRegister()
+  const navigate = useNavigate()
 
-const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
   const registerForm = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -45,13 +46,18 @@ const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
   })
 
   function onSubmit(values: z.infer<typeof registerSchema>) {
-    handleSubmit(values)
+    mutate(values, {
+      onSuccess: () => {
+        navigate("/")
+      }
+    })
   }
 
   return (
     <Form {...registerForm}>
       <form onSubmit={registerForm.handleSubmit(onSubmit)} className="space-y-5">
         <FormField
+          disabled={isPending}
           control={registerForm.control}
           name="name"
           render={({ field }) => (
@@ -65,6 +71,7 @@ const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
           )}
         />
         <FormField
+          disabled={isPending}
           control={registerForm.control}
           name="email"
           render={({ field }) => (
@@ -78,6 +85,7 @@ const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
           )}
         />
         <FormField
+          disabled={isPending}
           control={registerForm.control}
           name="password"
           render={({ field }) => (
@@ -91,6 +99,7 @@ const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
           )}
         />
         <FormField
+          disabled={isPending}
           control={registerForm.control}
           name="confirmPassword"
           render={({ field }) => (
@@ -103,7 +112,9 @@ const RegisterForm = ({ handleSubmit }: RegisterFormProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button disabled={isPending} type="submit" className="w-full">
+          Sign up
+        </Button>
       </form>
     </Form>
   )

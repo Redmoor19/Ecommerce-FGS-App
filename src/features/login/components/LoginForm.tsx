@@ -13,18 +13,18 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import useLogin from "../hooks/useLogin"
+import { useNavigate } from "react-router-dom"
 
 const loginSchema: z.ZodType<Credentials> = z.object({
   email: z.string().email().trim(),
   password: z.string().min(8, "Password should be more then 8 characters")
 })
 
-type LoginFormProps = {
-  submitHandler: (creds: Credentials) => void
-  forgotPasswordHandler: () => void
-}
+const LoginForm = () => {
+  const { mutate, isPending } = useLogin()
+  const navigate = useNavigate()
 
-const LoginForm = ({ submitHandler, forgotPasswordHandler }: LoginFormProps) => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -34,7 +34,15 @@ const LoginForm = ({ submitHandler, forgotPasswordHandler }: LoginFormProps) => 
   })
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
-    submitHandler(values)
+    mutate(values, {
+      onSuccess: () => {
+        navigate("/")
+      }
+    })
+  }
+
+  function forgotPasswordHandler() {
+    navigate("/forgot-password")
   }
 
   return (
@@ -47,7 +55,7 @@ const LoginForm = ({ submitHandler, forgotPasswordHandler }: LoginFormProps) => 
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="doe@example.com" {...field} />
+                <Input disabled={isPending} placeholder="doe@example.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -60,16 +68,26 @@ const LoginForm = ({ submitHandler, forgotPasswordHandler }: LoginFormProps) => 
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="Nobody's gonna know" {...field} />
+                <Input
+                  type="password"
+                  disabled={isPending}
+                  placeholder="Nobody's gonna know"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
-          Submit
+        <Button disabled={isPending} className="w-full" type="submit">
+          Sign in
         </Button>
-        <Button onClick={forgotPasswordHandler} variant="link" className="w-full">
+        <Button
+          disabled={isPending}
+          onClick={forgotPasswordHandler}
+          variant="link"
+          className="w-full"
+        >
           Forgot password
         </Button>
       </form>

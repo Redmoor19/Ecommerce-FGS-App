@@ -1,20 +1,17 @@
 import { ApiError } from "@/api/apiError"
-import { login } from "@/api/authApi"
 import { useToast } from "@/components/ui/use-toast"
-import useLocalState from "@/hooks/useLocalState"
-import { QueryClient, useMutation } from "@tanstack/react-query"
-
-const queryClient = new QueryClient()
+import { useMutation } from "@tanstack/react-query"
+import { login as logInUser } from "@/api/authApi"
+import useAuthContext from "@/context/authContext"
 
 const useLogin = () => {
-  const [token, setToken] = useLocalState("token", "")
   const { toast } = useToast()
+  const { login } = useAuthContext()
 
   const mutation = useMutation({
-    mutationFn: login,
+    mutationFn: logInUser,
     onSuccess: (data) => {
-      setToken(data.token)
-      queryClient.setQueryData(["user"], data.user)
+      login(data)
     },
     onError: (error: ApiError) => {
       toast({

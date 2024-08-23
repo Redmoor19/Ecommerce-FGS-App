@@ -1,9 +1,9 @@
-import Register from "@/features/register/Register"
+import RegisterForm from "@/features/register/components/RegisterForm"
 
 const SignUpPage = () => {
   return (
     <>
-      <Register />
+      <RegisterForm />
     </>
   )
 }

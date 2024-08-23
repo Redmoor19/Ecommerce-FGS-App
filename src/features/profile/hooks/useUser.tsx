@@ -11,10 +11,15 @@ const useUser = () => {
     refetch
   } = useQuery<User, ApiError>({
     queryFn: getCurrentUser,
-    queryKey: ["user"]
+    queryKey: ["user"],
+    retry: (failureCount, error) => (error.status === 404 && failureCount <= 3 ? true : false)
   })
 
-  return { user, error, isLoading, refetch }
+  let isLogged = false
+
+  isLogged = !!user
+
+  return { user, error, isLoading, isLogged, role: user?.role, refetch }
 }
 
 export default useUser

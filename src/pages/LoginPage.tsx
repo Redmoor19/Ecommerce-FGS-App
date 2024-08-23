@@ -1,9 +1,9 @@
-import Login from "@/features/login/Login"
+import LoginForm from "@/features/login/components/LoginForm"
 
 const LoginPage = () => {
   return (
     <>
-      <Login />
+      <LoginForm />
     </>
   )
 }
