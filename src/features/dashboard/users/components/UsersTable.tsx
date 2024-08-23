@@ -21,10 +21,10 @@ const UsersTable = () => {
 
   if (users)
     return (
-      <Table>
+      <Table className="text-md">
         <TableHeader>
           <TableRow>
-            <TableHead>Username</TableHead>
+            <TableHead className="pl-8">Username</TableHead>
             <TableHead>Email</TableHead>
             <TableHead className="text-center">Role</TableHead>
             <TableHead className="text-center">Status</TableHead>
@@ -35,7 +35,7 @@ const UsersTable = () => {
             if (user.id != currentUser?.id)
               return (
                 <TableRow key={user.id}>
-                  <TableCell className="">{user.name}</TableCell>
+                  <TableCell className="pl-8">{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell className="text-center">
                     <RoleBadge title={user.role} />
