@@ -66,6 +66,7 @@ const UsersTable = () => {
     )
 
   if (error) return <ErrorDisplay error={error} />
+  return null
 }
 
 export default UsersTable

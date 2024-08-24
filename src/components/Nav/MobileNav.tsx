@@ -5,8 +5,8 @@ import { LogIn, LogOut, Moon, Sun } from "lucide-react"
 
 const MobileNav = ({ routes, isLogged, theme, logout, toggleTheme, className }: NavProps) => {
   return (
-    <nav className={`${className} bg-gradient py-4`}>
-      <ul className="flex justify-center items-center gap-7 text-gray-200 relative">
+    <nav className={`${className} bg-gradient h-[70px]`}>
+      <ul className="flex h-full justify-center items-center gap-7 text-gray-200 relative">
         {routes.map((route) => (
           <li key={route.path}>
             <NavLink to={route.path}>

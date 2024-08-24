@@ -3,7 +3,7 @@ import { EmbeddedReview } from "./review"
 export type Game = {
   id: string
   name: string
-  genreList: string
+  genreList: string[]
   quantity: number
   thumbnail: string
   images: string[]

@@ -5,8 +5,10 @@ import { Sun, Moon, LogIn, LogOut } from "lucide-react"
 
 const DesktopNav = ({ routes, isLogged, theme, toggleTheme, logout, className }: NavProps) => {
   return (
-    <nav className={`bg-gradient py-3 text-xl relative ${className}`}>
-      <ul className="flex justify-end items-center text-white gap-5 container">
+    <nav
+      className={`bg-gradient h-[60px] flex items-center justify-center text-xl relative ${className}`}
+    >
+      <ul className="h-full flex justify-end items-center text-white gap-5 container">
         {routes.map((route, i) => (
           <li key={route.path} className={`${i === 0 && "mr-auto"} hover:scale-110`}>
             <NavLink
