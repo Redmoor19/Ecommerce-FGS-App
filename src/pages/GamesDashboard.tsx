@@ -1,9 +1,9 @@
-import GamesTable from "@/features/dashboard/games/components/GamesTable"
+import Games from "@/features/dashboard/games/Games"
 
 const GamesDashboard = () => {
   return (
     <>
-      <GamesTable />
+      <Games />
     </>
   )
 }
