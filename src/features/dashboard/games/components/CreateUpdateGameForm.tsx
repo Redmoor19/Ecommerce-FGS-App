@@ -36,10 +36,16 @@ const gameSchema: z.ZodType<CreateGame> = z.object({
     .trim(),
   quantity: z.number(),
   thumbnail: z.string(),
-  images: z.array(z.string()).min(1),
+  images: z.array(z.string().url()).min(1),
   releaseDate: z.date(),
   systemRequirements: z.string().min(1, "Please provide the system requirements"),
-  price: z.number().nonnegative(),
+  price: z
+    .string()
+    .min(1, "Price cannot be empty")
+    .transform((value) => value.replace(",", "."))
+    .refine((value) => !isNaN(parseFloat(value)), "Price must be a valid number")
+    .transform((value) => parseFloat(value))
+    .refine((value) => value >= 0, "Price cannot be negative"),
   developer: z.string().min(1, "Please enter the game developer")
 })
 
@@ -188,10 +194,9 @@ const CreateUpdateGameForm = ({
                 <FormControl>
                   <Input
                     disabled={filedsDisables}
-                    type="number"
                     placeholder="20"
                     {...field}
-                    onChange={(e) => field.onChange(+e.target.value)}
+                    onChange={(e) => field.onChange(e.target.value)}
                   />
                 </FormControl>
                 <FormMessage />

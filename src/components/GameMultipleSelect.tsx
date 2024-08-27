@@ -38,7 +38,11 @@ const GameMultipleSelect = ({ items, placeholder, paramKey }: GameMultipleSelect
         <MultiSelectorList>
           {items.map((item) => (
             <MultiSelectorItem key={item} value={item}>
-              {item.toLowerCase().split("_").join(" ")}
+              {item
+                .toLowerCase()
+                .split("_")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}
             </MultiSelectorItem>
           ))}
         </MultiSelectorList>

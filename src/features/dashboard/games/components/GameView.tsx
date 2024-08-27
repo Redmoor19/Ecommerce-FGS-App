@@ -47,11 +47,11 @@ const GameView = ({ game }: { game: Game }) => {
           <div className="flex flex-col gap-2 py-2">
             <div className="flex items-center gap-2">
               <WrenchIcon className="w-5 h-5" />
-              <span>Mojang Studios</span>
+              <span>{game.developer}</span>
             </div>
             <div className="flex items-center gap-2">
               <CalendarIcon className="w-5 h-5" />
-              <span>November 18, 2011</span>
+              <span>{new Date(game.releaseDate).toDateString()}</span>
             </div>
             <p className="text-muted-foreground">Genres: {game.genreList.join(", ")}</p>
             <p className="text-muted-foreground">Player Support: {game.playerSupport.join(", ")}</p>

@@ -51,7 +51,7 @@ const adminRoutes: NavRoute[] = [
 ]
 
 const Nav = () => {
-  const { user, role, isLoading, isLogged } = useUser()
+  const { user, role, isLogged } = useUser()
   const { theme, toggleTheme } = useDarkContext()
   const { logout } = useAuthContext()
 

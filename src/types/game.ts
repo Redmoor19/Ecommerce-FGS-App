@@ -11,7 +11,7 @@ export type Game = {
   releaseDate: Date
   systemRequirements: string
   playerSupport: string[]
-  price: number
+  price: number | string
   description: string
   sku: string
   active: boolean
