@@ -9,8 +9,8 @@ const useAddKey = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (gameId: string) => addGameKey(gameId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["games"], exact: true })
-      queryClient.invalidateQueries({ queryKey: ["activeGames"], exact: true })
+      queryClient.invalidateQueries({ queryKey: ["games"] })
+      queryClient.invalidateQueries({ queryKey: ["activeGames"] })
       toast({
         title: "Success",
         description: "Key added"

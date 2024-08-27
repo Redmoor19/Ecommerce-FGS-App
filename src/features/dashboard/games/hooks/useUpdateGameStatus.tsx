@@ -1,20 +1,21 @@
 import { ApiError } from "@/api/apiError"
-import { updateGame } from "@/api/gameApi"
+import { updateGameStatus } from "@/api/gameApi"
 import { useToast } from "@/components/ui/use-toast"
-import { UpdateGame } from "@/types/game"
+import { GameUpdateStatus } from "@/types/game"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 
-const useUpdateGame = () => {
+const useUpdateGameStatus = () => {
   const { toast } = useToast()
   const queryClient = useQueryClient()
   const { mutate, isPending } = useMutation({
-    mutationFn: (data: UpdateGame) => updateGame(data),
-    onSuccess: () => {
+    mutationFn: ({ id, status }: { id: string; status: GameUpdateStatus }) =>
+      updateGameStatus(id, { status }),
+    onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["games"] })
       queryClient.invalidateQueries({ queryKey: ["activeGames"] })
       toast({
         title: "Success",
-        description: "Game updated"
+        description: `Game ${data.active ? "activated" : "deactivated"}`
       })
     },
     onError: (error: ApiError) => {
@@ -29,4 +30,4 @@ const useUpdateGame = () => {
   return { mutate, isPending }
 }
 
-export default useUpdateGame
+export default useUpdateGameStatus

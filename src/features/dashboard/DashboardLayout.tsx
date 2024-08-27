@@ -3,7 +3,7 @@ import DashboardSidebar from "./DashboardSidebar"
 
 const DashboardLayout = () => {
   return (
-    <div className="container grid grid-cols-[auto_1fr] h-[calc(100vh-70px)] md:h-[calc(100vh-60px)]">
+    <div className="container grid grid-cols-[auto_1fr] h-full">
       <DashboardSidebar />
       <div className="h-full overflow-y-auto">
         <Outlet />

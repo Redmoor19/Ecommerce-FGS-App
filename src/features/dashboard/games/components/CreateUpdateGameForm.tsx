@@ -32,14 +32,14 @@ const gameSchema: z.ZodType<CreateGame> = z.object({
   description: z
     .string()
     .min(1, "Please provide the description")
-    .max(200, "This is to much for description")
+    .max(1000, "This is to much for description")
     .trim(),
   quantity: z.number(),
   thumbnail: z.string(),
   images: z.array(z.string()).min(1),
   releaseDate: z.date(),
   systemRequirements: z.string().min(1, "Please provide the system requirements"),
-  price: z.number().positive(),
+  price: z.number().nonnegative(),
   developer: z.string().min(1, "Please enter the game developer")
 })
 
@@ -169,7 +169,7 @@ const CreateUpdateGameForm = ({
               <FormItem>
                 <FormLabel>Requirements</FormLabel>
                 <FormControl>
-                  <Input
+                  <Textarea
                     disabled={filedsDisables}
                     placeholder="OS: Windows 11, CPU: Intel i7, RAM: 16GB, GPU: NVIDIA RTX 3080"
                     {...field}
@@ -206,7 +206,7 @@ const CreateUpdateGameForm = ({
                 <FormItem>
                   <CustomSelector
                     placeholder="Genres"
-                    value={field.value}
+                    values={field.value}
                     setValue={field.onChange}
                     items={genres}
                   />
@@ -221,7 +221,7 @@ const CreateUpdateGameForm = ({
                 <FormItem>
                   <CustomSelector
                     placeholder="Player Support"
-                    value={field.value}
+                    values={field.value}
                     setValue={field.onChange}
                     items={playerSupport}
                   />

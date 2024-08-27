@@ -14,7 +14,7 @@ const Games = () => {
 
   if (gameData)
     return (
-      <section>
+      <section className="h-full flex flex-col">
         <GamesControlBar />
         <GamesTable gameData={gameData} />
       </section>

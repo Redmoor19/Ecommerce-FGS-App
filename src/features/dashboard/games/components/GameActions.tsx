@@ -6,6 +6,8 @@ import CreateUpdateGameForm from "./CreateUpdateGameForm"
 import useUpdateGame from "../hooks/useUpdateGame"
 import GameView from "./GameView"
 import AddKey from "./AddKey"
+import UpdateActiveStatus from "./UpdateActiveStatus"
+import useUpdateGameStatus from "../hooks/useUpdateGameStatus"
 
 type GameActionsProps = {
   game: Game
@@ -13,7 +15,8 @@ type GameActionsProps = {
 
 const GameActions = ({ game }: GameActionsProps) => {
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
-  const { mutate, isPending } = useUpdateGame()
+  const { mutate: gameUpdate, isPending: gameIsUpdating } = useUpdateGame()
+  const { mutate: statusUpdate, isPending: statusIsUpdating } = useUpdateGameStatus()
 
   function onUpdate(updateGame: CreateGame) {
     const data: UpdateGame = {
@@ -21,11 +24,15 @@ const GameActions = ({ game }: GameActionsProps) => {
       id: game.id,
       images: updateGame.images.filter((image) => image != "")
     }
-    mutate(data, {
+    gameUpdate(data, {
       onSuccess: () => {
         setUpdateModalOpen(false)
       }
     })
+  }
+
+  function onStatusUpdate() {
+    statusUpdate({ id: game.id, status: game.active ? "DEACTIVATE" : "ACTIVATE" })
   }
 
   return (
@@ -42,11 +49,16 @@ const GameActions = ({ game }: GameActionsProps) => {
       >
         <CreateUpdateGameForm
           submitHandler={onUpdate}
-          filedsDisables={isPending}
+          filedsDisables={gameIsUpdating}
           game={game}
           submitTitle="Update"
         />
       </GameModal>
+      <UpdateActiveStatus
+        onClick={onStatusUpdate}
+        isActive={game.active}
+        disabled={statusIsUpdating}
+      />
     </div>
   )
 }

@@ -8,15 +8,15 @@ import {
 } from "@/components/ui/multiselect"
 
 type CustomSelectorProps = {
-  value: string[]
+  values: string[]
   setValue: (value: string[]) => void
   items: string[]
   placeholder: string
 }
 
-const CustomSelector = ({ value, setValue, items, placeholder }: CustomSelectorProps) => {
+const CustomSelector = ({ values, setValue, items, placeholder }: CustomSelectorProps) => {
   return (
-    <MultiSelector values={value} onValuesChange={setValue} loop className="max-w-xs">
+    <MultiSelector values={values} onValuesChange={setValue} loop className="max-w-xs">
       <MultiSelectorTrigger>
         <MultiSelectorInput placeholder={placeholder} />
       </MultiSelectorTrigger>

@@ -14,11 +14,11 @@ export type Game = {
   price: number
   description: string
   sku: string
-  isActive: boolean
+  active: boolean
   rating: number
 }
 
-export type CreateGame = Omit<Game, "id" | "sku" | "isActive" | "rating">
+export type CreateGame = Omit<Game, "id" | "sku" | "isActive" | "rating" | "active">
 
 export type UpdateGame = CreateGame & {
   id: string
@@ -44,3 +44,7 @@ export type SingleGame = Omit<Game, "rating"> & {
 export type Key = {
   gameId: string
 }
+
+export type GameUpdateStatus = "ACTIVATE" | "DEACTIVATE"
+
+export type SortType = "price" | "averageRating" | "quantity" | "name"

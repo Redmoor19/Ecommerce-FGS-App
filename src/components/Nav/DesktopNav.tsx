@@ -13,7 +13,7 @@ const DesktopNav = ({ routes, isLogged, theme, toggleTheme, logout, className }:
           <li key={route.path} className={`${i === 0 && "mr-auto"} hover:scale-110`}>
             <NavLink
               className={({ isActive }) =>
-                `${isActive && "underline underline-offset-2"} flex gap-3 items-center `
+                `${isActive && "underline underline-offset-2"} flex gap-3 items-center`
               }
               to={route.path}
             >

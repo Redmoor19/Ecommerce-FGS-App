@@ -1,9 +1,7 @@
+import SingleGame from "@/features/singleGame/SingleGame"
+
 const SingleGamePage = () => {
-  return (
-    <div>
-      <h1>Single game</h1>
-    </div>
-  )
+  return <SingleGame />
 }
 
 export default SingleGamePage

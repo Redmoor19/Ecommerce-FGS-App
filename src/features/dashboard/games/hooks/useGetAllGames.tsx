@@ -9,7 +9,7 @@ const useGetAllGames = () => {
     isLoading,
     error
   } = useQuery({
-    queryKey: ["activeGames"],
+    queryKey: ["games", searchParams.toString()],
     queryFn: () => getAllGames(searchParams)
   })
 

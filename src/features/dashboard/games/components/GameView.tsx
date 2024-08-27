@@ -31,7 +31,7 @@ const GameView = ({ game }: { game: Game }) => {
           <h1 className="text-3xl font-bold ">{game.name}</h1>
           <p className="text-primary font-bold text-2xl py-3">{game.price} €</p>
           <div className="flex gap-3 items-center">
-            {game.isActive ? (
+            {game.active ? (
               <p className="text-lime-500">ACTIVE</p>
             ) : (
               <p className="text-red-500">NOT ACTIVE</p>

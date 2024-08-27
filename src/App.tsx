@@ -6,6 +6,7 @@ import {
   LoginPage,
   OrdersDashboard,
   SignUpPage,
+  SingleGamePage,
   UsersDashboard
 } from "./pages"
 import AuthLayout from "./components/AuthLayout"
@@ -19,7 +20,10 @@ function App() {
       <BrowserRouter>
         <AppLayout>
           <Routes>
-            <Route index path="/" element={<HomePage />} />
+            <Route index path="/" element={<Navigate to={"/games"} replace />} />
+            <Route path="/games" element={<HomePage />} />
+            <Route path="/games/:id" element={<SingleGamePage />} />
+            <Route />
             <Route element={<AuthLayout />}>
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/login" element={<LoginPage />} />

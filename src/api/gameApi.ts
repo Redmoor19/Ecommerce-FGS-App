@@ -1,6 +1,14 @@
 import { URLSearchParams } from "url"
 import api from "."
-import { CreateGame, Game, GameList, Key, SingleGame, UpdateGame } from "@/types/game"
+import {
+  CreateGame,
+  Game,
+  GameList,
+  GameUpdateStatus,
+  Key,
+  SingleGame,
+  UpdateGame
+} from "@/types/game"
 import { CreateUpdateReview, Review } from "@/types/review"
 
 export const getAllGames = (params?: URLSearchParams): Promise<GameList> =>
@@ -15,11 +23,10 @@ export const getSingleGame = (gameId: string): Promise<SingleGame> => api.get(`/
 
 export const updateGame = (data: UpdateGame): Promise<Game> => api.patch("/games", data)
 
-export const activateGame = (gameId: string): Promise<Game> =>
-  api.patch(`/games/activation/${gameId}`)
-
-export const deactivateGame = (gameId: string): Promise<Game> =>
-  api.patch(`/games/deactivation/${gameId}`)
+export const updateGameStatus = (
+  gameId: string,
+  data: { status: GameUpdateStatus }
+): Promise<Game> => api.patch(`/games/status/${gameId}`, data)
 
 export const getGenres = (): Promise<string[]> => api.get("/games/genres")
 
