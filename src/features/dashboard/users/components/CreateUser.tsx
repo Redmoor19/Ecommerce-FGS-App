@@ -9,7 +9,7 @@ type CreateUserProps = {
 }
 
 const CreateUser = ({ children }: CreateUserProps) => {
-  const { mutate, isPending } = useCreateUser()
+  const { mutate } = useCreateUser()
   const [open, setOpen] = useState(false)
 
   function onSubmit(values: CreateUserType) {
@@ -27,7 +27,7 @@ const CreateUser = ({ children }: CreateUserProps) => {
           </SheetTitle>
         </SheetHeader>
         <div className="py-7">
-          <CreateUserForm handleSubmit={onSubmit} isDisabled={isPending} submitTitle="Create" />
+          <CreateUserForm handleSubmit={onSubmit} submitTitle="Create" />
         </div>
       </SheetContent>
     </Sheet>

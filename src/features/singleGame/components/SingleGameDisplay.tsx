@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button"
 import { SingleGame } from "@/types/game"
 import SingleGameCarousel from "./SingleGameCarousel"
 import { splitSystemRequirements } from "@/lib/splitSystemRequirements"
 import { Building2Icon, CalendarFoldIcon } from "lucide-react"
-import ToggleFavourite from "@/features/favourites/components/ToggleFavourite"
+import ToggleCart from "@/features/cart/components/ToggleCart"
+import GoBack from "@/components/GoBack"
+import ToggleFavourite from "@/features/profile/favourites/components/ToggleFavourite"
 
 type SingleGameDisplayProps = {
   game: SingleGame
@@ -26,6 +27,7 @@ const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
   return (
     <div className="container bg-background text-foreground">
       <section className="py-12 md:py-12">
+        <GoBack />
         <div className="grid md:grid-cols-2 gap-14 items-center">
           <SingleGameCarousel images={images} />
           <div className="space-y-4 relative">
@@ -60,7 +62,7 @@ const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
               </div>
             </div>
             <div className="text-2xl font-bold">{price} €</div>
-            <Button size="lg">Add to cart</Button>
+            <ToggleCart gameId={game.id} />
           </div>
         </div>
       </section>

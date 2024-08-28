@@ -68,7 +68,7 @@ const CreateUpdateGameForm = ({
   const gameForm = useForm<z.infer<typeof gameSchema>>({
     resolver: zodResolver(gameSchema),
     defaultValues: game?.id
-      ? { ...game, releaseDate: new Date(game.releaseDate) }
+      ? { ...game, releaseDate: new Date(game.releaseDate), price: game.price.toString() }
       : {
           name: "",
           description: "",
@@ -76,7 +76,7 @@ const CreateUpdateGameForm = ({
           genreList: [],
           images: [""],
           playerSupport: [],
-          price: 0,
+          price: "0",
           quantity: 0,
           releaseDate: new Date(),
           systemRequirements: "",
@@ -159,7 +159,9 @@ const CreateUpdateGameForm = ({
                     }
                     value={
                       field.value instanceof Date
-                        ? field.value.toISOString().split("T")[0]
+                        ? `${field.value.getFullYear()}-${String(
+                            field.value.getMonth() + 1
+                          ).padStart(2, "0")}-${String(field.value.getDate()).padStart(2, "0")}`
                         : field.value || ""
                     }
                   />

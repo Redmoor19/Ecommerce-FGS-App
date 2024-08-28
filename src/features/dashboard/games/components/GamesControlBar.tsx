@@ -27,17 +27,8 @@ const GamesControlBar = () => {
 
   return (
     <div className="flex gap-5 p-5 flex-col">
-      <GameSearchInput />
-      <div className="flex items-center gap-3">
-        <GameSortBy options={sortOptions} />
-        {genres && <GameMultipleSelect paramKey="genres" placeholder="Genres" items={genres} />}
-        {playerSupport && (
-          <GameMultipleSelect
-            paramKey="playerSupport"
-            placeholder="Player support"
-            items={playerSupport}
-          />
-        )}
+      <div className="flex gap-3">
+        <GameSearchInput />
         <GameModal
           trigger={<Button>Create Game</Button>}
           title="Create Game"
@@ -50,6 +41,19 @@ const GamesControlBar = () => {
             submitTitle="Create"
           />
         </GameModal>
+      </div>
+      <div className="flex flex-col lg:flex-row items-center gap-3">
+        <GameSortBy options={sortOptions} />
+        <div className="flex gap-3">
+          {genres && <GameMultipleSelect paramKey="genres" placeholder="Genres" items={genres} />}
+          {playerSupport && (
+            <GameMultipleSelect
+              paramKey="playerSupport"
+              placeholder="Player support"
+              items={playerSupport}
+            />
+          )}
+        </div>
       </div>
     </div>
   )

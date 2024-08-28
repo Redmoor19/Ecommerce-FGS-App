@@ -1,44 +1,27 @@
-import { NavLink } from "react-router-dom"
+import { NavRoute } from "@/components/Nav/Nav"
+import SideBar from "@/components/SideBar"
+import { Gamepad2Icon, TicketCheckIcon, UserCogIcon } from "lucide-react"
 
-type SidebarLink = {
-  title: string
-  path: string
-}
-
-const links: SidebarLink[] = [
+const links: NavRoute[] = [
   {
     title: "Users",
-    path: "/dashboard/users"
+    path: "/dashboard/users",
+    icon: <UserCogIcon />
   },
   {
     title: "Games",
-    path: "/dashboard/games"
+    path: "/dashboard/games",
+    icon: <Gamepad2Icon />
   },
   {
     title: "Orders",
-    path: "/dashboard/orders"
+    path: "/dashboard/orders",
+    icon: <TicketCheckIcon />
   }
 ]
 
 const DashboardSidebar = () => {
-  return (
-    <aside>
-      <ul className="flex flex-col gap-9 pr-10 py-9 border-r-[1px] text-2xl text-muted-foreground h-full">
-        {links.map(({ title, path }) => (
-          <li key={path}>
-            <NavLink
-              className={({ isActive }) =>
-                `${isActive ? "text-primary font-semibold" : "hover:underline"} underline-offset-2`
-              }
-              to={path}
-            >
-              {title}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-    </aside>
-  )
+  return <SideBar links={links} />
 }
 
 export default DashboardSidebar

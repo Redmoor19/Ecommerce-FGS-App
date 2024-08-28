@@ -1,4 +1,4 @@
-import useUser from "@/features/profile/hooks/useUser"
+import useUser from "@/features/profile/me/hooks/useUser"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 

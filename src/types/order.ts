@@ -21,7 +21,7 @@ export type Order = {
   createdAt: number
   status: (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
   paymentStatus: (typeof PAYMENT_STATUS)[keyof typeof PAYMENT_STATUS]
-  games: Game[]
+  games: GameOrder[]
 }
 
 export type OrderWithUser = Omit<Order, "userId"> & {

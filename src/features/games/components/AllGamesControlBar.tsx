@@ -12,7 +12,7 @@ const AllGamesControlBar = () => {
   return (
     <div className="flex flex-col gap-3 md:gap-0">
       <GameSearchInput />
-      <div className="flex items-start flex-col md:gap-5 md:items-center md:flex-row">
+      <div className="flex items-start flex-col md:gap-3 md:items-center md:flex-row">
         <GameSortBy options={sortOptions} />
         {genres && <GameMultipleSelect paramKey="genres" items={genres} placeholder="Genres " />}
         {playerSupport && (

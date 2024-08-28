@@ -11,7 +11,7 @@ import Loader from "@/components/Loader"
 import StatusBadge from "./StatusBadge"
 import RoleBadge from "./RoleBadge"
 import UsersActions from "./UsersActions"
-import useUser from "@/features/profile/hooks/useUser"
+import useUser from "@/features/profile/me/hooks/useUser"
 import ErrorDisplay from "@/components/ErrorDisplay"
 import UsersControlBar from "./UsersControlBar"
 import { useState } from "react"
@@ -35,7 +35,7 @@ const UsersTable = () => {
         <Table className="text-md">
           <TableHeader>
             <TableRow>
-              <TableHead className="pl-8">Username</TableHead>
+              <TableHead className="pl-8 hidden lg:block">Username</TableHead>
               <TableHead>Email</TableHead>
               <TableHead className="text-center">Role</TableHead>
               <TableHead className="text-center">Status</TableHead>
@@ -46,7 +46,7 @@ const UsersTable = () => {
               if (user.id != currentUser?.id)
                 return (
                   <TableRow key={user.id}>
-                    <TableCell className="pl-8">{user.name}</TableCell>
+                    <TableCell className="pl-8  hidden lg:block">{user.name}</TableCell>
                     <TableCell>{user.email}</TableCell>
                     <TableCell className="text-center">
                       <RoleBadge title={user.role} />

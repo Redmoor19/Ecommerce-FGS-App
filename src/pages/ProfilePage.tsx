@@ -1,9 +1,7 @@
+import ProfileLayout from "@/features/profile/ProfileLayout"
+
 const ProfilePage = () => {
-  return (
-    <div>
-      <h1>Profile page</h1>
-    </div>
-  )
+  return <ProfileLayout />
 }
 
 export default ProfilePage

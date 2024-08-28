@@ -13,6 +13,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
+type CreateUserFormProps = {
+  isDisabled?: boolean
+  submitTitle: string
+  handleSubmit: (values: CreateUser) => void
+  className?: string
+}
+
 const createUserSchema: z.ZodType<CreateUser> = z
   .object({
     name: z
@@ -28,13 +35,12 @@ const createUserSchema: z.ZodType<CreateUser> = z
     message: "Password confirmation should match the password"
   })
 
-type CreateUserFormProps = {
-  isDisabled: boolean
-  submitTitle: string
-  handleSubmit: (values: CreateUser) => void
-}
-
-const CreateUserForm = ({ handleSubmit, submitTitle, isDisabled }: CreateUserFormProps) => {
+const CreateUserForm = ({
+  handleSubmit,
+  submitTitle,
+  isDisabled,
+  className
+}: CreateUserFormProps) => {
   const createUserForm = useForm<z.infer<typeof createUserSchema>>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
@@ -51,7 +57,7 @@ const CreateUserForm = ({ handleSubmit, submitTitle, isDisabled }: CreateUserFor
 
   return (
     <Form {...createUserForm}>
-      <form onSubmit={createUserForm.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={createUserForm.handleSubmit(onSubmit)} className={`${className} space-y-5`}>
         <FormField
           disabled={isDisabled}
           control={createUserForm.control}

@@ -2,7 +2,7 @@ import { createContext, useContext } from "react"
 import { useQueryClient } from "@tanstack/react-query"
 import { User, UserLogin, UserRoleType } from "@/types/user"
 import useLocalState from "@/hooks/useLocalState"
-import useUser from "@/features/profile/hooks/useUser"
+import useUser from "@/features/profile/me/hooks/useUser"
 
 const authContext = createContext(
   {} as {
@@ -11,6 +11,7 @@ const authContext = createContext(
     user: User | undefined
     role: UserRoleType | undefined
     isLogged: boolean
+    isLoading: boolean
   }
 )
 
@@ -19,7 +20,11 @@ const useAuthContext = () => useContext(authContext)
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useLocalState("token", "")
   const queryClient = useQueryClient()
-  const { isLogged, user, role } = useUser()
+  const { user, role, isLoading, error } = useUser()
+
+  if (error?.status === 401 && token) {
+    logout()
+  }
 
   function login(logData: UserLogin) {
     setToken(logData.token)
@@ -30,8 +35,11 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     setToken("")
     queryClient.removeQueries({ queryKey: ["user"], exact: true })
   }
+
+  const isLogged = !!user
+
   return (
-    <authContext.Provider value={{ login, logout, user, role, isLogged }}>
+    <authContext.Provider value={{ login, logout, user, role, isLogged, isLoading }}>
       {children}
     </authContext.Provider>
   )

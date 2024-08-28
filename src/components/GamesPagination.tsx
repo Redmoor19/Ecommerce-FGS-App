@@ -66,7 +66,7 @@ const GamesPagination = ({
   if (totalItems === 0) return null
 
   return (
-    <Pagination className={className}>
+    <Pagination className={`${className}`}>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious

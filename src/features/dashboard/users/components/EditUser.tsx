@@ -1,8 +1,8 @@
-import UpdateUserForm from "@/features/profile/components/UpdateUserForm"
 import { UpdateUser, User } from "@/types/user"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import useUpdateUser from "../hooks/useUpdateUser"
 import { useState } from "react"
+import UpdateUserForm from "@/features/profile/me/components/UpdateUserForm"
 
 type EditUserProps = {
   user: User

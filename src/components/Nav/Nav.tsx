@@ -1,4 +1,4 @@
-import useUser from "@/features/profile/hooks/useUser"
+import useUser from "@/features/profile/me/hooks/useUser"
 import DesktopNav from "./DesktopNav"
 import { Cog, Gamepad2, LogIn, UserRound } from "lucide-react"
 import useDarkContext from "@/context/darkThemeContext"
@@ -51,13 +51,12 @@ const adminRoutes: NavRoute[] = [
 ]
 
 const Nav = () => {
-  const { user, role, isLogged } = useUser()
   const { theme, toggleTheme } = useDarkContext()
-  const { logout } = useAuthContext()
+  const { logout, user, role, isLogged } = useAuthContext()
 
   let routes: NavRoute[] = []
 
-  if (!user) routes = freeRoutes
+  if (!isLogged) routes = freeRoutes
   if (user && role === "USER") routes = userRoutes
   if (user && role === "ADMIN") routes = adminRoutes
 

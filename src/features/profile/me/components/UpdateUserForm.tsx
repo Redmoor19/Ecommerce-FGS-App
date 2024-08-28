@@ -28,9 +28,11 @@ const userSchema: z.ZodType<UpdateUser> = z.object({
 type UpdateUserFormProps = {
   user: User
   submitHandler: (updateUser: UpdateUser) => void
+  isUpdating: boolean
+  className?: string
 }
 
-const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
+const UpdateUserForm = ({ user, submitHandler, isUpdating, className }: UpdateUserFormProps) => {
   const updateForm = useForm<z.infer<typeof userSchema>>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -53,7 +55,7 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
 
   return (
     <Form {...updateForm}>
-      <form onSubmit={updateForm.handleSubmit(onSubmit)} className="space-y-5">
+      <form onSubmit={updateForm.handleSubmit(onSubmit)} className={`${className} space-y-5`}>
         <FormField
           control={updateForm.control}
           name="name"
@@ -61,7 +63,7 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder={user.name} {...field} />
+                <Input disabled={isUpdating} placeholder={user.name} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -74,7 +76,7 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder={user.email} {...field} />
+                <Input disabled={isUpdating} placeholder={user.email} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -88,12 +90,16 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
               <FormLabel>Birth date</FormLabel>
               <FormControl>
                 <Input
+                  disabled={isUpdating}
                   type="date"
                   {...field}
                   onChange={(e) => field.onChange(e.target.value ? new Date(e.target.value) : null)}
                   value={
                     field.value instanceof Date
-                      ? field.value.toISOString().split("T")[0]
+                      ? `${field.value.getFullYear()}-${String(field.value.getMonth() + 1).padStart(
+                          2,
+                          "0"
+                        )}-${String(field.value.getDate()).padStart(2, "0")}`
                       : field.value || ""
                   }
                 />
@@ -110,6 +116,7 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
               <FormLabel>Address</FormLabel>
               <FormControl>
                 <Input
+                  disabled={isUpdating}
                   placeholder={user.address ?? "Street 2 C 2, 13415, City"}
                   {...field}
                   value={field.value ?? ""}
@@ -127,6 +134,7 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
               <FormLabel>Phone</FormLabel>
               <FormControl>
                 <Input
+                  disabled={isUpdating}
                   placeholder={user.phone ?? "+358 418 17 14"}
                   {...field}
                   value={field.value ?? ""}
@@ -136,7 +144,9 @@ const UpdateUserForm = ({ user, submitHandler }: UpdateUserFormProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Update</Button>
+        <Button disabled={isUpdating} type="submit">
+          Update
+        </Button>
       </form>
     </Form>
   )
