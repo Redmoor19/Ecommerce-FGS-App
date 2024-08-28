@@ -47,4 +47,4 @@ export type Key = {
 
 export type GameUpdateStatus = "ACTIVATE" | "DEACTIVATE"
 
-export type SortType = "price" | "averageRating" | "quantity" | "name"
+export type SortType = "price" | "averageRating" | "quantity" | "name" | "releaseDate"

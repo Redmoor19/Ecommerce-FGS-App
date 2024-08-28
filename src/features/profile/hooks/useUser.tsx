@@ -15,9 +15,7 @@ const useUser = () => {
     retry: (failureCount, error) => (error.status === 404 && failureCount <= 3 ? true : false)
   })
 
-  let isLogged = false
-
-  isLogged = !!user
+  const isLogged = !!user
 
   return { user, error, isLoading, isLogged, role: user?.role, refetch }
 }

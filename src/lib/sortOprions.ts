@@ -2,6 +2,12 @@ import { SortOptionType } from "@/components/GameSortBy"
 
 const sortOptions: SortOptionType[] = [
   {
+    key: "releaseDate",
+    label: "release date",
+    asc: "old to new",
+    desc: "new to old"
+  },
+  {
     key: "name",
     label: "name",
     asc: "A to Z",

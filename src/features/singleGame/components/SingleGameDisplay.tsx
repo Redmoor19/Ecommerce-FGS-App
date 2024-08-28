@@ -3,6 +3,7 @@ import { SingleGame } from "@/types/game"
 import SingleGameCarousel from "./SingleGameCarousel"
 import { splitSystemRequirements } from "@/lib/splitSystemRequirements"
 import { Building2Icon, CalendarFoldIcon } from "lucide-react"
+import ToggleFavourite from "@/features/favourites/components/ToggleFavourite"
 
 type SingleGameDisplayProps = {
   game: SingleGame
@@ -10,6 +11,7 @@ type SingleGameDisplayProps = {
 
 const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
   const {
+    id,
     name,
     genreList,
     playerSupport,
@@ -26,7 +28,10 @@ const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
       <section className="py-12 md:py-12">
         <div className="grid md:grid-cols-2 gap-14 items-center">
           <SingleGameCarousel images={images} />
-          <div className="space-y-4">
+          <div className="space-y-4 relative">
+            <div className="absolute z-30 top-3 right-0">
+              <ToggleFavourite gameId={id} />
+            </div>
             <h1 className="text-4xl font-bold">{name}</h1>
             <div className="flex items-center gap-4">
               {genreList.map((genre) => (
