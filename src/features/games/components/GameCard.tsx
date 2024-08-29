@@ -16,7 +16,7 @@ const GameCard = ({ game }: GameCardProps) => {
         className="object-cover group-hover:grayscale transition-all duration-300 w-full h-full"
         src={game.thumbnail}
       />
-      <div className="absolute inset-0 p-2 flex flex-col justify-end z-10 bg-background/80 opacity-0 group-hover:opacity-100 transition-all duration-300">
+      <div className="absolute inset-0 p-2 flex flex-col justify-end z-10 bg-background/60  dark:bg-background/80 opacity-0 group-hover:opacity-100 transition-all duration-300">
         <div className="bg-gradient text-transparent bg-clip-text font-semibold text-2xl">
           <h2>{game.name}</h2>
           <div className="flex justify-between items-center gap-1">

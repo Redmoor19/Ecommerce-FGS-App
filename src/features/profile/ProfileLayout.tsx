@@ -11,7 +11,7 @@ const ProfileLayout = () => {
   useEffect(() => {
     const canSee = checkPermisson("USER", "PROFILE:VIEW", "view")
     if ((!canSee || !isLogged) && !isLoading) navigate("/")
-  }, [isLogged])
+  }, [isLogged, isLoading])
 
   return (
     <div className="md:container grid grid-cols-[auto_1fr] h-full">

@@ -1,8 +1,15 @@
 import GameCard from "@/features/games/components/GameCard"
 import useGetFavourites from "../hooks/useGetFavourites"
+import { Loader } from "lucide-react"
+import ErrorDisplay from "@/components/ErrorDisplay"
+import { ApiError } from "@/api/apiError"
 
 const FavouritesGrid = () => {
   const { error, favourites, isLoading } = useGetFavourites()
+
+  if (isLoading) return <Loader />
+
+  if (error) return <ErrorDisplay error={error as ApiError} />
 
   if (favourites)
     return favourites.length != 0 ? (
@@ -19,7 +26,7 @@ const FavouritesGrid = () => {
       </section>
     )
 
-  return null
+  return <ErrorDisplay error={new ApiError("Something went very wrong!", 500)} />
 }
 
 export default FavouritesGrid

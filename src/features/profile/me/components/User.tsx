@@ -1,12 +1,13 @@
 import { UpdatePassword, UpdateUser } from "@/types/user"
 import useUpdateCurrentUser from "../hooks/useUpdateCurrentUser"
-import useUser from "../hooks/useUser"
 import UpdateUserForm from "./UpdateUserForm"
 import UpdatePasswordForm from "./UpdatePasswordForm"
 import useUpdateCurrentPassword from "../hooks/useUpdateCurrentPassword"
+import useAuthContext from "@/context/authContext"
+import { Loader } from "lucide-react"
 
 const User = () => {
-  const { user } = useUser()
+  const { user, isLoading } = useAuthContext()
   const { mutate: mutateUser, isPending: pendingUser } = useUpdateCurrentUser()
   const { mutate: mutatePassword, isPending: pendingPassword } = useUpdateCurrentPassword()
 
@@ -18,6 +19,7 @@ const User = () => {
     mutatePassword(data)
   }
 
+  if (isLoading) return <Loader />
   if (!user) return null
   return (
     <div className="grid md:grid-cols-2 p-5 gap-5">

@@ -23,6 +23,7 @@ const UsersTable = () => {
   const [searchUsers, setSearchUser] = useState("")
 
   if (isLoading) return <Loader />
+  if (error) return <ErrorDisplay error={error} />
 
   function searchUsersByEmail(users: User[], searchString: string) {
     return users.filter((user) => user.email.toLowerCase().includes(searchString.toLowerCase()))
@@ -65,7 +66,6 @@ const UsersTable = () => {
       </section>
     )
 
-  if (error) return <ErrorDisplay error={error} />
   return null
 }
 

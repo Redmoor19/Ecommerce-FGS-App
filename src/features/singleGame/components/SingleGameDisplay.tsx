@@ -5,6 +5,8 @@ import { Building2Icon, CalendarFoldIcon } from "lucide-react"
 import ToggleCart from "@/features/cart/components/ToggleCart"
 import GoBack from "@/components/GoBack"
 import ToggleFavourite from "@/features/profile/favourites/components/ToggleFavourite"
+import CreateReviewForm from "@/features/reviews/components/CreateReviewForm"
+import Reviews from "@/features/reviews/components/Reviews"
 
 type SingleGameDisplayProps = {
   game: SingleGame
@@ -66,7 +68,7 @@ const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
           </div>
         </div>
       </section>
-      <section className="container py-12 md:py-24 border-t">
+      <section className="py-12 md:py-24 border-t">
         <div className="grid gap-8">
           <div>
             <h2 className="text-2xl font-bold mb-4">Description</h2>
@@ -81,6 +83,9 @@ const SingleGameDisplay = ({ game }: SingleGameDisplayProps) => {
             </ul>
           </div>
         </div>
+      </section>
+      <section className="py-12 md:py-24 border-t">
+        <Reviews reviews={game.reviews} gameId={game.id} averageRating={game.averageRating} />
       </section>
     </div>
   )

@@ -5,20 +5,29 @@ import { ShoppingCartIcon } from "lucide-react"
 import useGetCart from "../hooks/useGetCart"
 import CartItem from "./CartItem"
 import { useEffect, useState } from "react"
+import { useToast } from "@/components/ui/use-toast"
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
   const { isLogged } = useAuthContext()
-  const { games } = useGetCart()
+  const { games, cart, error } = useGetCart()
+  const { toast } = useToast()
 
   const isEmpty = games.length === 0
-  const gamesInCart = !isEmpty ? games.reduce((acc: number, curr) => acc + curr.quantity, 0) : 0
 
   useEffect(() => {
-    if (gamesInCart === 0) setOpen(false)
-  }, [gamesInCart, setOpen])
+    if (isEmpty) setOpen(false)
+  }, [setOpen, isEmpty])
 
-  if (!isLogged) return null
+  if (error)
+    toast({
+      variant: "destructive",
+      title: "Failed to load cart",
+      description: error.message
+    })
+
+  if (!isLogged || error) return null
+
   return (
     <div
       className={`fixed ${
@@ -31,15 +40,18 @@ const Cart = () => {
             <ShoppingCartIcon />
           </Button>
         </SheetTrigger>
-        <SheetContent aria-describedby={undefined}>
+        <SheetContent aria-describedby={undefined} className="h-screen flex flex-col">
           <SheetHeader>
             <SheetTitle className="text-primary">Cart</SheetTitle>
           </SheetHeader>
-          <ul className="mt-10 flex flex-col gap-5">
+          <ul className="mt-10 flex flex-col gap-5 overflow-y-auto">
             {games.map((game) => (
               <CartItem key={game.id} game={game} />
             ))}
           </ul>
+          <div className="mt-auto">
+            <p className="text-xl text-primary">Total: {cart?.totalPrice.toFixed(2)}€</p>
+          </div>
         </SheetContent>
       </Sheet>
     </div>

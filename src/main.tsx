@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 import App from "./App"
 import "./index.css"
+import "@smastrom/react-rating/style.css"
 import { AuthContextProvider } from "./context/authContext"
 import { DarkContextProvider } from "./context/darkThemeContext"
 
