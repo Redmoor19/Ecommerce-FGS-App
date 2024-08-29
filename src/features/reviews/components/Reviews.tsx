@@ -2,7 +2,6 @@ import { CreateUpdateReview, EmbeddedReview } from "@/types/review"
 import CreateReviewForm from "./CreateReviewForm"
 import useAddReview from "../hooks/useAddReview"
 import StarRating from "./StarRating"
-import { UserIcon } from "lucide-react"
 import ReviewCard from "./ReviewCard"
 
 type ReviewsProps = {

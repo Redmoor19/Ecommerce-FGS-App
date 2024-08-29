@@ -15,7 +15,7 @@ const DashboardLayout = () => {
 
   if (isAdmin)
     return (
-      <div className="lg:container">
+      <div className="lg:container h-full">
         <div className="hidden md:grid grid-cols-[auto_1fr] h-full">
           <DashboardSidebar />
           <div className="hidden md:block h-full overflow-y-auto">

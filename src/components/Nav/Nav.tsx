@@ -1,6 +1,5 @@
-import useUser from "@/features/profile/me/hooks/useUser"
 import DesktopNav from "./DesktopNav"
-import { Cog, Gamepad2, LogIn, UserRound } from "lucide-react"
+import { Cog, Gamepad2, UserRound } from "lucide-react"
 import useDarkContext from "@/context/darkThemeContext"
 import useAuthContext from "@/context/authContext"
 import MobileNav from "./MobileNav"

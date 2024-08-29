@@ -5,7 +5,6 @@ import { Building2Icon, CalendarFoldIcon } from "lucide-react"
 import ToggleCart from "@/features/cart/components/ToggleCart"
 import GoBack from "@/components/GoBack"
 import ToggleFavourite from "@/features/profile/favourites/components/ToggleFavourite"
-import CreateReviewForm from "@/features/reviews/components/CreateReviewForm"
 import Reviews from "@/features/reviews/components/Reviews"
 
 type SingleGameDisplayProps = {

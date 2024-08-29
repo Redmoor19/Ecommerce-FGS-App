@@ -5,26 +5,17 @@ import { ShoppingCartIcon } from "lucide-react"
 import useGetCart from "../hooks/useGetCart"
 import CartItem from "./CartItem"
 import { useEffect, useState } from "react"
-import { useToast } from "@/components/ui/use-toast"
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
   const { isLogged } = useAuthContext()
   const { games, cart, error } = useGetCart()
-  const { toast } = useToast()
 
   const isEmpty = games.length === 0
 
   useEffect(() => {
     if (isEmpty) setOpen(false)
   }, [setOpen, isEmpty])
-
-  if (error)
-    toast({
-      variant: "destructive",
-      title: "Failed to load cart",
-      description: error.message
-    })
 
   if (!isLogged || error) return null
 

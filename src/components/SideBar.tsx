@@ -8,8 +8,8 @@ type SideBarProps = {
 
 const SideBar = ({ links }: SideBarProps) => {
   return (
-    <aside>
-      <ul className="flex flex-col gap-9 py-7 border-r-[1px] text-xl text-muted-foreground h-full">
+    <aside className=" h-full">
+      <ul className="flex flex-col gap-9 py-7 border-r-[1px] text-xl text-muted-foreground  h-full">
         {links.map(({ title, path, icon }) => (
           <li key={path}>
             <NavLink
