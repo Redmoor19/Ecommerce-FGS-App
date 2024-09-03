@@ -11,16 +11,22 @@ const ORDER_STATUS = {
 const PAYMENT_STATUS = {
   waiting: "WAITING",
   paid: "PAID",
-  unpaid: "UNPAID"
+  unpaid: "UNPAID",
+  rejected: "REJECTED"
 } as const
+
+export type OrderStatus = (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
+
+export type PaymentStatus = (typeof PAYMENT_STATUS)[keyof typeof PAYMENT_STATUS]
 
 export type Order = {
   id: string
   userId: string
   totalPrice: number
   createdAt: number
-  status: (typeof ORDER_STATUS)[keyof typeof ORDER_STATUS]
-  paymentStatus: (typeof PAYMENT_STATUS)[keyof typeof PAYMENT_STATUS]
+  updatedAt: number
+  status: OrderStatus
+  paymentStatus: PaymentStatus
   games: GameOrder[]
 }
 
@@ -35,5 +41,11 @@ export type GameOrder = {
 
 export type PayOrder = {
   orderId: string
-  isPayedSuccessfully: boolean
+  isPaidSuccessfully: boolean
+}
+
+export type OrdersWithStats = {
+  orders: Order[]
+  stats: { [key: string]: number }
+  totalSum: number
 }

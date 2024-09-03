@@ -36,6 +36,10 @@ export type GameList = {
   allGamesList: Game[]
 }
 
+export type MostPopularGame = Pick<Game, "id" | "name" | "thumbnail"> & {
+  totalQuantity: number
+}
+
 export type SingleGame = Omit<Game, "rating"> & {
   averageRating: number
   reviews: EmbeddedReview[]

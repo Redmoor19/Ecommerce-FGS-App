@@ -11,9 +11,9 @@ export const forgotPassword = (email: string): Promise<void> =>
   })
 
 export const resetPassword = (token: string, data: ResetPassword): Promise<UserLogin> =>
-  api.post(`/auth/reset-password/${token}`, data)
+  api.patch(`/auth/reset-password/${token}`, data)
 
-export const verifyEmail = (token: string) => api.post(`/auth/verify/${token}`)
+export const verifyEmail = (token: string): Promise<UserLogin> => api.post(`/auth/verify/${token}`)
 
 export const sendVerification = () => api.post(`/auth/verify/send-mail`)
 

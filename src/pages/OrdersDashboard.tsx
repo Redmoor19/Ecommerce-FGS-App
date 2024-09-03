@@ -1,5 +1,7 @@
+import AdminOrders from "@/features/dashboard/orders/AdminOrders"
+
 const OrdersDashboard = () => {
-  return <div></div>
+  return <AdminOrders />
 }
 
 export default OrdersDashboard

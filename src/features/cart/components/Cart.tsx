@@ -5,11 +5,14 @@ import { ShoppingCartIcon } from "lucide-react"
 import useGetCart from "../hooks/useGetCart"
 import CartItem from "./CartItem"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import useClearCart from "../hooks/useClearCart"
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
   const { isLogged } = useAuthContext()
   const { games, cart, error } = useGetCart()
+  const { mutate: clearCart } = useClearCart()
 
   const isEmpty = games.length === 0
 
@@ -42,6 +45,16 @@ const Cart = () => {
           </ul>
           <div className="mt-auto">
             <p className="text-xl text-primary">Total: {cart?.totalPrice.toFixed(2)}€</p>
+            <div className="flex justify-between">
+              <Link to="/profile/orders">
+                <Button className="p-0" variant="link" onClick={() => setOpen(false)}>
+                  To checkout
+                </Button>
+              </Link>
+              <Button variant="destructive" onClick={() => clearCart()}>
+                Clear cart
+              </Button>
+            </div>
           </div>
         </SheetContent>
       </Sheet>

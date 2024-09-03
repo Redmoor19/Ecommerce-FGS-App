@@ -1,12 +1,15 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import {
+  AccountVerificationPage,
   Dashboard,
   FavouritesPage,
+  ForgotPasswordPage,
   GamesDashboard,
   HomePage,
   LoginPage,
   OrdersDashboard,
   OrdersPage,
+  PasswordResetPage,
   ProfilePage,
   SignUpPage,
   SingleGamePage,
@@ -27,6 +30,9 @@ function App() {
             <Route index path="/" element={<Navigate to={"/games"} replace />} />
             <Route path="/games" element={<HomePage />} />
             <Route path="/games/:id" element={<SingleGamePage />} />
+            <Route path="/verify/:token" element={<AccountVerificationPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password/:token" element={<PasswordResetPage />} />
             <Route path="/profile" element={<ProfilePage />}>
               <Route index element={<Navigate to="/profile/me" replace />} />
               <Route path="me" element={<UserPage />} />

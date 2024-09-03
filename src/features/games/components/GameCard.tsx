@@ -1,3 +1,4 @@
+import customRound from "@/lib/customRound"
 import { Game } from "@/types/game"
 import { StarIcon } from "lucide-react"
 import { Link } from "react-router-dom"
@@ -10,7 +11,7 @@ const GameCard = ({ game }: GameCardProps) => {
   return (
     <Link
       to={`/games/${game.id}`}
-      className="relative group hover:scale-105 transition-all duration-300 text-primary overflow-hidden z-30"
+      className="relative group aspect-[0.666/1] hover:scale-105 transition-all duration-300 text-primary overflow-hidden z-30"
     >
       <img
         className="object-cover group-hover:grayscale transition-all duration-300 w-full h-full"
@@ -23,7 +24,7 @@ const GameCard = ({ game }: GameCardProps) => {
             {game.rating != 0 ? (
               <>
                 <StarIcon className="text-yellow-600" size={20} />
-                <p className="mr-auto text-xl">{game.rating}/5</p>
+                <p className="mr-auto text-xl">{customRound(game.rating)}/5</p>
               </>
             ) : (
               <p></p>

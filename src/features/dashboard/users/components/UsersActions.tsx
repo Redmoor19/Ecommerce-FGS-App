@@ -15,6 +15,7 @@ import {
   GripHorizontal,
   LockKeyhole,
   Pencil,
+  ReceiptEuroIcon,
   UserCog,
   UserMinus,
   UserPlus,
@@ -25,6 +26,7 @@ import useDeleteUser from "../hooks/useDeleteUser"
 import useActivateUser from "../hooks/useActivateUser"
 import ViewUser from "./ViewUser"
 import EditUser from "./EditUser"
+import { Link } from "react-router-dom"
 
 type UsersDropdownProps = {
   user: User
@@ -49,6 +51,9 @@ const UsersActions = ({ user }: UsersDropdownProps) => {
 
   return (
     <div className="flex items-center justify-end gap-3 text-muted-foreground">
+      <Link to="/dashboard/orders" state={user}>
+        <ReceiptEuroIcon className="mr-2 cursor-pointer hover:text-primary" size={25} />
+      </Link>
       <ViewUser user={user}>
         <Eye className="mr-2 cursor-pointer hover:text-primary" size={25} />
       </ViewUser>

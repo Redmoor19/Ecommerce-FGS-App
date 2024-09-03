@@ -1,6 +1,6 @@
 import GameCard from "@/features/games/components/GameCard"
 import useGetFavourites from "../hooks/useGetFavourites"
-import { Loader } from "lucide-react"
+import Loader from "@/components/Loader"
 import ErrorDisplay from "@/components/ErrorDisplay"
 import { ApiError } from "@/api/apiError"
 

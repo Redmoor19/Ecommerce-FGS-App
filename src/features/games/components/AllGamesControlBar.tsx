@@ -1,21 +1,13 @@
 import GameMultipleSelect from "@/components/GameMultipleSelect"
 import GameSearchInput from "@/components/GameSearchInput"
 import GameSortBy from "@/components/GameSortBy"
-import { useToast } from "@/components/ui/use-toast"
 import useGetGenres from "@/features/dashboard/games/hooks/useGetGenres"
 import useGetPlayerSupport from "@/features/dashboard/games/hooks/useGetPlayerSupport"
 import sortOptions from "@/lib/sortOprions"
 
 const AllGamesControlBar = () => {
-  const { genres, error: genresError } = useGetGenres()
-  const { playerSupport, error: psError } = useGetPlayerSupport()
-  const { toast } = useToast()
-
-  if (genresError || psError)
-    toast({
-      variant: "destructive",
-      title: `Failed to load ${genresError ? "genres" : "player support"}`
-    })
+  const { genres } = useGetGenres()
+  const { playerSupport } = useGetPlayerSupport()
 
   return (
     <div className="flex flex-col gap-3 md:gap-0">

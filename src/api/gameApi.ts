@@ -6,6 +6,7 @@ import {
   GameList,
   GameUpdateStatus,
   Key,
+  MostPopularGame,
   SingleGame,
   UpdateGame
 } from "@/types/game"
@@ -16,6 +17,8 @@ export const getAllGames = (params?: URLSearchParams): Promise<GameList> =>
 
 export const getAllActiveGames = (params?: URLSearchParams): Promise<GameList> =>
   api.get("/games/active", { params })
+
+export const getMostPopularGames = (): Promise<MostPopularGame[]> => api.get("/games/most-popular")
 
 export const createGame = (data: CreateGame): Promise<Game> => api.post("/games", data)
 

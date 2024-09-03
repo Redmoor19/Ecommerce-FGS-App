@@ -32,7 +32,8 @@ const createUserSchema: z.ZodType<CreateUser> = z
     confirmPassword: z.string().min(8, "Password confirm can't be shorter then password")
   })
   .refine((fields) => fields.password === fields.confirmPassword, {
-    message: "Password confirmation should match the password"
+    message: "Password confirmation should match the password",
+    path: ["confirmPassword"]
   })
 
 const CreateUserForm = ({

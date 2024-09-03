@@ -13,6 +13,9 @@ const AllGamesGrid = () => {
 
   const { currentPageNumber, totalGamesCount, totalPages } = activeGames.allGamesHead
 
+  if (totalGamesCount === 0)
+    return <h2 className="mb-auto text-center py-20 text-2xl text-primary">No games found</h2>
+
   return (
     <div className="flex flex-grow flex-col gap-3 justify-between">
       <div className="grid grid-cols-2 sm:grid-cols-3  md:grid-cols-4 xl:grid-cols-6 gap-5 justify-self-start">

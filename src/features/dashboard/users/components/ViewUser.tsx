@@ -23,6 +23,7 @@ const ViewUser = ({ children, user }: ViewUserProps) => {
           <div className="flex items-center gap-4">
             <div className="flex flex-col items-start gap-2">
               <h3 className="text-2xl font-semibold">{user.name}</h3>
+              <p className="text-muted-foreground">{user.id}</p>
               <div className="flex gap-3">
                 <RoleBadge title={user.role} />
                 <StatusBadge title={user.activeStatus} />

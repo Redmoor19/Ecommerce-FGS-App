@@ -1,7 +1,7 @@
-import { Order, OrderWithUser, PayOrder } from "@/types/order"
+import { Order, OrdersWithStats, OrderWithUser, PayOrder } from "@/types/order"
 import api from "."
 
-export const getAllOrders = (): Promise<Order[]> => api.get("/orders")
+export const getAllOrders = (): Promise<OrdersWithStats> => api.get("/orders")
 
 export const getAllExtendedOrders = (): Promise<OrderWithUser[]> => api.get("/extended-orders")
 
