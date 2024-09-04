@@ -1,11 +1,11 @@
-import useUser from "@/features/profile/me/hooks/useUser"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import useAuthContext from "@/context/authContext"
 
 const AuthLayout = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const { isLogged } = useUser()
+  const { isLogged } = useAuthContext()
 
   if (isLogged) {
     navigate(-1)

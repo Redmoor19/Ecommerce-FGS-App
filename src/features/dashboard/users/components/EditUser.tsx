@@ -10,7 +10,7 @@ type EditUserProps = {
 }
 
 const EditUser = ({ user, children }: EditUserProps) => {
-  const { mutate } = useUpdateUser()
+  const { mutate, isPending } = useUpdateUser()
   const [open, setOpen] = useState(false)
 
   function handleSubmit(updatedUser: UpdateUser) {
@@ -27,7 +27,7 @@ const EditUser = ({ user, children }: EditUserProps) => {
             <span className="text-primary">Edit user</span>
           </SheetTitle>
         </SheetHeader>
-        <UpdateUserForm user={user} submitHandler={handleSubmit} />
+        <UpdateUserForm isUpdating={isPending} user={user} submitHandler={handleSubmit} />
       </SheetContent>
     </Sheet>
   )
