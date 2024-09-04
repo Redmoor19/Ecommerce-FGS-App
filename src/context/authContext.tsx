@@ -23,10 +23,6 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const queryClient = useQueryClient()
   const { user, role, isLoading, error } = useUser()
 
-  if (error?.status === 401 && token) {
-    logout()
-  }
-
   function login(logData: UserLogin) {
     setToken(logData.token)
     queryClient.setQueryData(["user"], logData.user)
