@@ -52,13 +52,13 @@ const UsersActions = ({ user }: UsersDropdownProps) => {
   return (
     <div className="flex items-center justify-end gap-3 text-muted-foreground">
       <Link to="/dashboard/orders" state={user}>
-        <ReceiptEuroIcon className="mr-2 cursor-pointer hover:text-primary" size={25} />
+        <ReceiptEuroIcon className="cursor-pointer hover:text-primary" size={25} />
       </Link>
       <ViewUser user={user}>
-        <Eye className="mr-2 cursor-pointer hover:text-primary" size={25} />
+        <Eye className="cursor-pointer hover:text-primary" size={25} />
       </ViewUser>
       <EditUser user={user}>
-        <Pencil className="mr-2 cursor-pointer hover:text-primary" size={25} />
+        <Pencil className="cursor-pointer hover:text-primary" size={25} />
       </EditUser>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>

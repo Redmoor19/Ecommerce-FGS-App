@@ -1,15 +1,35 @@
-import PopularGames from "./PopularGames"
+import { Button } from "@/components/ui/button"
+import { Link } from "react-router-dom"
 
 const Hero = () => {
   return (
-    <section className="container flex flex-col md:flex-row justify-between items-center my-16">
-      <div className="aspect-square h-[500px] md:h-[300px] lg:h-[400px] xl:h-[500px] 2xl:h-[600px] rounded-full bg-gradient-to-br from-primary/80 to-primary/0 -translate-x-[20%] relative flex items-end justify-end">
-        <div className="translate-x-[30%]">
-          <h1 className="text-5xl sm:text-6xl text-primary mb-5 text-center">FAKE GAME APP</h1>
-          <img src="/computer.png" alt="computer" className="w-4/5" />
+    <section className="relative h-screen w-full">
+      <img
+        src="/main_bg-min.jpg"
+        className="grayscale-[50%] absolute inset-0 object-cover h-full w-full z-10"
+      />
+      <div className="container h-screen flex items-center justify-center flex-col gap-5 z-20 relative text-white text-center">
+        <h1 className="text-6xl">Fake game store</h1>
+        <h2 className="text-4xl">Level Up Your Gaming Experience</h2>
+        <p className="text-2xl">
+          Unlock Instant Access to Your Favorite Games with Exclusive Deals and Lightning-Fast
+          Delivery!
+        </p>
+        <p className="text-2xl">
+          Get the best prices on game keys for PC, console, and more. Start playing in minutes with
+          our seamless, secure checkout.
+        </p>
+        <div className="flex justify-center gap-5 mt-10">
+          <a href="#gameSearch">
+            <Button className=" text-xl p-6">Explore games</Button>
+          </a>
+          <Link to="/signup">
+            <Button variant="secondary" className="text-xl p-6">
+              Sign Up
+            </Button>
+          </Link>
         </div>
       </div>
-      <PopularGames />
     </section>
   )
 }

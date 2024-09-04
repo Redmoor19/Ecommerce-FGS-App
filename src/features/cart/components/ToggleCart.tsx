@@ -1,8 +1,9 @@
 import useAuthContext from "@/context/authContext"
 import useGetCart from "../hooks/useGetCart"
-import { Button } from "@/components/ui/button"
 import useAddToCart from "../hooks/useAddToCart"
 import useRemoveFromCart from "../hooks/useRemoveFromCart"
+
+import { Button } from "@/components/ui/button"
 
 const ToggleCart = ({ gameId }: { gameId: string }) => {
   const { isLogged } = useAuthContext()

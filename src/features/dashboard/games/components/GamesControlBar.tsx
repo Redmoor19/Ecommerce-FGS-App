@@ -1,15 +1,16 @@
-import { CreateGame as CreateGameType } from "@/types/game"
-import CreateUpdateGameForm from "./CreateUpdateGameForm"
-import useCreateGame from "../hooks/useCreateGame"
 import { useState } from "react"
-import GameModal from "./GameModal"
+import useGetPlayerSupport from "../hooks/useGetPlayerSupport"
+import useGetGenres from "../hooks/useGetGenres"
+import useCreateGame from "../hooks/useCreateGame"
+import sortOptions from "@/lib/sortOprions"
+
+import CreateUpdateGameForm from "./CreateUpdateGameForm"
 import { Button } from "@/components/ui/button"
 import GameSearchInput from "@/components/GameSearchInput"
 import GameSortBy from "@/components/GameSortBy"
-import useGetGenres from "../hooks/useGetGenres"
 import GameMultipleSelect from "@/components/GameMultipleSelect"
-import useGetPlayerSupport from "../hooks/useGetPlayerSupport"
-import sortOptions from "@/lib/sortOprions"
+import GameModal from "./GameModal"
+import { CreateGame as CreateGameType } from "@/types/game"
 
 const GamesControlBar = () => {
   const { mutate, isPending } = useCreateGame()

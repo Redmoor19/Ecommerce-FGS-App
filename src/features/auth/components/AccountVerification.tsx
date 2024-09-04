@@ -1,9 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom"
-import useVerifyAccount from "../hooks/useVerifyAccount"
 import { useEffect } from "react"
-import Loader from "@/components/Loader"
-import useAuthContext from "@/context/authContext"
 import { useToast } from "@/components/ui/use-toast"
+import useAuthContext from "@/context/authContext"
+import useVerifyAccount from "../hooks/useVerifyAccount"
+
+import Loader from "@/components/Loader"
 
 const AccountVerification = () => {
   const { token } = useParams()

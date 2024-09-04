@@ -1,7 +1,6 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -23,7 +22,6 @@ const GamesTable = ({ gameData }: GamesTableProps) => {
   return (
     <div className="flex-1 flex flex-col items-baseline justify-between gap-3 pb-5">
       <Table className="flex-1 overflow-y-auto">
-        <TableCaption className="m-0">A list of all games</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-6">Status</TableHead>

@@ -1,7 +1,9 @@
-import { resetPassword } from "@/api/authApi"
-import { useToast } from "@/components/ui/use-toast"
-import { ResetPassword } from "@/types/user"
 import { useMutation } from "@tanstack/react-query"
+import { useToast } from "@/components/ui/use-toast"
+
+import { resetPassword } from "@/api/authApi"
+
+import { ResetPassword } from "@/types/user"
 
 const usePasswordReset = () => {
   const { toast } = useToast()

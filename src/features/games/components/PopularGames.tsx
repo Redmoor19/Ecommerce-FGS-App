@@ -20,34 +20,36 @@ const PopularGames = () => {
   })
 
   return (
-    <div className="aspect-square h-[500px] md:h-[300px] lg:h-[400px] xl:h-[500px] 2xl:h-[600px] flex flex-col items-center justify-center">
-      <h2 className="text-center text-3xl bg-gradient text-transparent bg-clip-text mb-5">
-        Most popular games last month
-      </h2>
-      <Carousel
-        opts={{
-          align: "start"
-        }}
-        plugins={[autoplay]}
-      >
-        <CarouselContent className="flex items-center">
-          {popularGames.map((game, index) => (
-            <CarouselItem
-              key={index}
-              className="flex justify-center items-center basis-1/2 xl:basis-1/3"
-            >
-              <Link to={`/games/${game.id}`} className="py-5 px-1">
-                <img
-                  className="aspect-[9/14] object-cover h-80 md:h-1/2 shadow-lg border shadow-primary/20"
-                  src={game.thumbnail}
-                  alt={`${game.name} thumb`}
-                />
-              </Link>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
-    </div>
+    <section className="container flex justify-center items-center py-20">
+      <div className="w-1/2">
+        <h2 className="text-center text-3xl bg-gradient text-transparent bg-clip-text ">
+          Most popular games last month
+        </h2>
+        <Carousel
+          opts={{
+            align: "start"
+          }}
+          plugins={[autoplay]}
+        >
+          <CarouselContent className="flex items-center">
+            {popularGames.map((game, index) => (
+              <CarouselItem
+                key={index}
+                className="flex justify-center items-center sm:basis-1/2 xl:basis-1/3"
+              >
+                <Link to={`/games/${game.id}`} className="py-5 px-1">
+                  <img
+                    className="aspect-[9/14] object-cover h-80 md:h-96 shadow-lg shadow-primary/20"
+                    src={game.thumbnail}
+                    alt={`${game.name} thumb`}
+                  />
+                </Link>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+    </section>
   )
 }
 

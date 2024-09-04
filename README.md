@@ -1,45 +1,82 @@
-# Frontend for an E-commerce Website
+# Fake Game Store App
 
-The current template tech stack: React, TypeScript, Tailwind, Shadcn, tanstack/react-query.
+## Description
 
-### General requirements
+This project is a frontend for asignment of Integrify Academy Full Stack course.
+The task was to create an ecommerce website and games' keys store was a pick for that.
+This project only works with the [backend](https://github.com/Redmoor19/fs18_java_backend).
+Fake Game App is a non-profitable study project without actual products. All data is mocked and keys are faked using UUID.
 
-**Pages to Create:**
+During this project I learned how to build complex ecommerce React application with server state, authentication and role based access. The deadlines for the assignment were tight and it helped to hone a skill of producing good code in limited amount of time. UI was implemented using [Shadcn/UI](https://ui.shadcn.com/). Usage and features will be listed below.
 
-1. Home page (list all the products)
-2. Product page (contain the details of a product)
-3. Dashboard page
+## Table of Contents
 
-**Functionalities for a Visitor:**
+- [Installation](#installation)
+- [DevStack](#devstack)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
 
-- Get list of products
-- Filter products by categories or price
-- Search products by name
-- Add products to a cart
-- Remove products from a cart
-- Do a checkout
+## Installation
 
-**Functionalities for an Admin:**
+- Fork this repository and clone your fork to local machine
+- Pull all the data from your fork
+- `npm install`
+- `npm run dev`
+  (To run this project you need to connect to backend, otherwise fetching won't work)
 
-- CRUD operation for:
-  - products
-  - users
-  - orders
-  - categories (if exists)
+## DevStack
 
-### Additional requirements
+This project was implemented using React and following packeges:
 
-**Authentication:**
+- [Axios](https://www.npmjs.com/package/axios) for fetching data from the server
+- [Shadcn/UI](https://ui.shadcn.com/) for UI/UX
+- [React-Router-Dom](https://reactrouter.com/en/main) for routing
+- [TailwindCss](https://tailwindcss.com/) for styling
+- [React-Hook-Form](https://react-hook-form.com/) for managing forms
+- [Zod](https://zod.dev/) for form validation
 
-- Implement register and login functionality via email and password
-- Protect the routes based on login and user role
+## Usage
 
-**Form Validation:**
+### User features
 
-- Implement form validation.
+- Registration and login (account verification with email coming to your email address)
+  ```md
+  ![Login](assets/images/login.png)
+  ![Register](assets/images/register.png)
+  ```
+- Games explore with sorting, pagination and search. Check game information and leave reviews.
+  ```md
+  ![All Games](assets/images/main.png)
+  ![Single Game](assets/images/single_game.png)
+  ![Reviews](assets/images/reviews.png)
+  ```
+- Profile with updating information, favourite games and cart (order checkout with sending email with purchased keys).
+  ```md
+  ![Profile](assets/images/profile.png)
+  ![Favourites](assets/images/favourites.png)
+  ![Cart](assets/images/cart.png)
+  ```
 
-### Bonus Requirement
+### Admin features
 
-- Messages, show loading, success, and error messages (e.g., when loading products list or adding new product)
-- Implement pagination feature
-- Create a Profile Page (only available if user logs in), implement editing user profile feature (user can change first name, last name)
+- Dashboard with an access to user create, update, soft delete
+  ```md
+  ![Users Dachboard](assets/images/users_dashboard.png)
+  ```
+- Dashboard with an access to games create, update, add keys, soft delete
+  ```md
+  ![Games Dachboard](assets/images/games_dashboard.png)
+  ```
+- Dashboard with an access to orders statistics and users information
+  ```md
+  ![Games Dachboard](assets/images/orders_dashboard.png)
+  ```
+
+## Credits
+
+Project was created by my own as an assignment to [Integrify Academy](https://www.integrify.io/)
+
+## License
+
+This project was created for study purposes only. You can copy, edit and contribute to it. No commercial use.

@@ -1,12 +1,12 @@
 import { Order } from "@/types/order"
 import useGetAllOrders from "../hooks/useGetAllOrders"
 import OrdersChart from "./OrdersChart"
-import { Loader } from "lucide-react"
 import ErrorDisplay from "@/components/ErrorDisplay"
 import { ApiError } from "@/api/apiError"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import OrderCard from "@/features/profile/orders/components/OrderCard"
+import Loader from "@/components/Loader"
 
 const OrdersStats = () => {
   const { data, error, isLoading } = useGetAllOrders()

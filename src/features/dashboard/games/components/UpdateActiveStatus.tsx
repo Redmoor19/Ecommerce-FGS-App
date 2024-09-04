@@ -14,11 +14,11 @@ const UpdateActiveStatus = ({ isActive, onClick, disabled }: UpdateStateProps) =
         <TooltipTrigger asChild>
           {isActive ? (
             <button onClick={onClick} disabled={disabled}>
-              <Trash2Icon size={25} />
+              <Trash2Icon className="hover:text-primary cursor-pointer" size={25} />
             </button>
           ) : (
             <button onClick={onClick} disabled={disabled}>
-              <RotateCcwIcon size={25} />
+              <RotateCcwIcon className="hover:text-primary cursor-pointer" size={25} />
             </button>
           )}
         </TooltipTrigger>

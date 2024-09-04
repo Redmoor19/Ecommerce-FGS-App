@@ -17,6 +17,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <App />
       </AuthContextProvider>
     </DarkContextProvider>
-    <ReactQueryDevtools buttonPosition="bottom-left" initialIsOpen={false} />
+    {/* <ReactQueryDevtools buttonPosition="bottom-left" initialIsOpen={false} /> */}
   </QueryClientProvider>
 )

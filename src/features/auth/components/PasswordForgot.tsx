@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { FormEvent, useState } from "react"
 import useSendPasswordReset from "../hooks/useSendPasswordReset"
+
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import Loader from "@/components/Loader"
 import ErrorDisplay from "@/components/ErrorDisplay"
+
 import { ApiError } from "@/api/apiError"
 
 const PasswordForgot = () => {
@@ -15,6 +17,7 @@ const PasswordForgot = () => {
     mutate(email)
   }
 
+  if (isPending) return <Loader />
   if (error) return <ErrorDisplay error={error as ApiError} />
 
   if (isSuccess)
@@ -24,8 +27,6 @@ const PasswordForgot = () => {
         You may close this page.
       </h2>
     )
-
-  if (isPending) return <Loader />
 
   if (isIdle)
     return (

@@ -1,13 +1,15 @@
-import { ResetPassword } from "@/types/user"
-import PasswordResetForm from "./PasswordResetForm"
+import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { useToast } from "@/components/ui/use-toast"
 import useAuthContext from "@/context/authContext"
-import { useEffect } from "react"
 import usePasswordReset from "../hooks/usePasswordReset"
+
+import PasswordResetForm from "./PasswordResetForm"
 import Loader from "@/components/Loader"
 import ErrorDisplay from "@/components/ErrorDisplay"
+
 import { ApiError } from "@/api/apiError"
+import { ResetPassword } from "@/types/user"
 
 const PasswordReset = () => {
   const { token } = useParams()

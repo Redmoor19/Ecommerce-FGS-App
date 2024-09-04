@@ -10,12 +10,13 @@ const GameSearchInput = () => {
     return search != null ? search : ""
   })
   const inputRef = useRef<HTMLInputElement>(null)
+  const [wasFocused, setWasFocused] = useState(false)
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (wasFocused && inputRef.current) {
       inputRef.current.focus()
     }
-  }, [searchParams])
+  }, [searchParams, wasFocused])
 
   const debouncedSearch = useDebounce((value: string) => {
     searchParams.set("search", value)
@@ -28,7 +29,25 @@ const GameSearchInput = () => {
     debouncedSearch(value)
   }
 
-  return <Input placeholder="Search games" ref={inputRef} value={search} onChange={handleChange} />
+  function handleFocus() {
+    setWasFocused(true)
+  }
+
+  function handleBlur() {
+    setWasFocused(false)
+  }
+
+  return (
+    <Input
+      placeholder="Search games"
+      id="gameSearch"
+      ref={inputRef}
+      value={search}
+      onChange={handleChange}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+    />
+  )
 }
 
 export default GameSearchInput

@@ -1,5 +1,6 @@
-import { verifyEmail } from "@/api/authApi"
 import { useMutation } from "@tanstack/react-query"
+
+import { verifyEmail } from "@/api/authApi"
 
 const useVerifyAccount = () => {
   const { mutate, isPending } = useMutation({

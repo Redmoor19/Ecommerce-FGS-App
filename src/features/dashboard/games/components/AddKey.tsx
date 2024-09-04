@@ -1,6 +1,7 @@
+import useAddKey from "../hooks/useAddKey"
+
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { KeyRound } from "lucide-react"
-import useAddKey from "../hooks/useAddKey"
 
 const AddKey = ({ gameId }: { gameId: string }) => {
   const { mutate, isPending } = useAddKey()
@@ -14,7 +15,7 @@ const AddKey = ({ gameId }: { gameId: string }) => {
       <Tooltip>
         <TooltipTrigger asChild>
           <button disabled={isPending} onClick={clickHandler}>
-            <KeyRound className="cursor-pointer" size={25} />
+            <KeyRound className="cursor-pointer hover:text-primary" size={25} />
           </button>
         </TooltipTrigger>
         <TooltipContent>

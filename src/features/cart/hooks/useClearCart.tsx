@@ -1,7 +1,8 @@
-import { ApiError } from "@/api/apiError"
-import { clearCart } from "@/api/orderApi"
-import { useToast } from "@/components/ui/use-toast"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useToast } from "@/components/ui/use-toast"
+
+import { clearCart } from "@/api/orderApi"
+import { ApiError } from "@/api/apiError"
 
 const useClearCart = () => {
   const { toast } = useToast()

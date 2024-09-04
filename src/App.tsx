@@ -7,6 +7,7 @@ import {
   GamesDashboard,
   HomePage,
   LoginPage,
+  NotFoundPage,
   OrdersDashboard,
   OrdersPage,
   PasswordResetPage,
@@ -49,6 +50,7 @@ function App() {
               <Route path="games" element={<GamesDashboard />} />
               <Route path="orders" element={<OrdersDashboard />} />
             </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AppLayout>
       </BrowserRouter>

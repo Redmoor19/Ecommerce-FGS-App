@@ -8,8 +8,6 @@ const AdminOrders = () => {
 
   const user: User = location.state ? location.state : undefined
 
-  console.log(user)
-
   if (!user) return <OrdersStats />
   if (user) return <UserOrders user={user} />
   return <></>

@@ -1,3 +1,10 @@
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import useGetGenres from "../hooks/useGetGenres"
+import useGetPlayerSupport from "../hooks/useGetPlayerSupport"
+import { useForm, useFieldArray } from "react-hook-form"
+import { isImageUrl } from "@/lib/isImageUrl"
+
 import {
   Form,
   FormControl,
@@ -8,17 +15,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { CreateGame, Game } from "@/types/game"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm, useFieldArray } from "react-hook-form"
-import { z } from "zod"
-import CustomSelector from "./CustomSelector"
 import { Button } from "@/components/ui/button"
-import { isImageUrl } from "@/lib/isImageUrl"
-import useGetGenres from "../hooks/useGetGenres"
-import useGetPlayerSupport from "../hooks/useGetPlayerSupport"
 import Loader from "@/components/Loader"
 import ErrorDisplay from "@/components/ErrorDisplay"
+import CustomSelector from "./CustomSelector"
+import { CreateGame, Game } from "@/types/game"
 import { ApiError } from "@/api/apiError"
 
 const gameSchema: z.ZodType<CreateGame> = z.object({
@@ -332,6 +333,7 @@ const CreateUpdateGameForm = ({
         </form>
       </Form>
     )
+
   return <ErrorDisplay error={new ApiError("Something went very wrong!", 530)} />
 }
 

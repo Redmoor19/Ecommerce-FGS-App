@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import useAuthContext from "@/context/authContext"
-import { ShoppingCartIcon } from "lucide-react"
-import useGetCart from "../hooks/useGetCart"
-import CartItem from "./CartItem"
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import useAuthContext from "@/context/authContext"
+import useGetCart from "../hooks/useGetCart"
 import useClearCart from "../hooks/useClearCart"
+
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button"
+import { ShoppingCartIcon } from "lucide-react"
+import CartItem from "./CartItem"
 
 const Cart = () => {
   const [open, setOpen] = useState(false)
@@ -44,10 +45,14 @@ const Cart = () => {
             ))}
           </ul>
           <div className="mt-auto">
-            <p className="text-xl text-primary">Total: {cart?.totalPrice.toFixed(2)}€</p>
+            <p className="text-xl">Total: {cart?.totalPrice.toFixed(2)}€</p>
             <div className="flex justify-between">
               <Link to="/profile/orders">
-                <Button className="p-0" variant="link" onClick={() => setOpen(false)}>
+                <Button
+                  className="p-0 text-lg font-bold"
+                  variant="link"
+                  onClick={() => setOpen(false)}
+                >
                   To checkout
                 </Button>
               </Link>

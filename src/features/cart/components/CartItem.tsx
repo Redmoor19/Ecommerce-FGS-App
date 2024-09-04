@@ -1,6 +1,7 @@
-import { Game } from "@/types/game"
 import useAddToCart from "../hooks/useAddToCart"
 import useRemoveFromCart from "../hooks/useRemoveFromCart"
+
+import { Game } from "@/types/game"
 import { Button } from "@/components/ui/button"
 
 type CartItemProps = {
