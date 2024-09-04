@@ -2,12 +2,9 @@
 
 ## Description
 
-This project is a frontend for asignment of Integrify Academy Full Stack course.
-The task was to create an ecommerce website and games' keys store was a pick for that.
-This project only works with the [backend](https://github.com/Redmoor19/fs18_java_backend).
-Fake Game App is a non-profitable study project without actual products. All data is mocked and keys are faked using UUID.
+This project is a frontend assignment for the Integrify Academy Full Stack course. The task was to create an e-commerce website, and a game key store was chosen for this purpose. This project only works with the [backend](https://github.com/Redmoor19/fs18_java_backend). Fake Game Store is a non-profit educational project with no actual products. All data is mocked, and keys are generated using UUID.
 
-During this project I learned how to build complex ecommerce React application with server state, authentication and role based access. The deadlines for the assignment were tight and it helped to hone a skill of producing good code in limited amount of time. UI was implemented using [Shadcn/UI](https://ui.shadcn.com/). Usage and features will be listed below.
+During this project, I learned how to build a complex e-commerce React application with server state, authentication, and role-based access. The tight deadlines for the assignment helped me hone the skill of producing good code within a limited time. The UI was implemented using [Shadcn/UI](https://ui.shadcn.com/). Usage and features are listed below.
 
 ## Table of Contents
 
@@ -19,15 +16,15 @@ During this project I learned how to build complex ecommerce React application w
 
 ## Installation
 
-- Fork this repository and clone your fork to local machine
-- Pull all the data from your fork
-- `npm install`
-- `npm run dev`
-  (To run this project you need to connect to backend, otherwise fetching won't work)
+- Fork this repository and clone your fork to your local machine.
+- Pull all the data from your fork.
+- Run `npm install`.
+- Run `npm run dev`.
+  (To run this project, you need to connect to the backend; otherwise, data fetching won't work.)
 
 ## DevStack
 
-This project was implemented using React and following packeges:
+This project was implemented using React and the following packages:
 
 - [Axios](https://www.npmjs.com/package/axios) for fetching data from the server
 - [Shadcn/UI](https://ui.shadcn.com/) for UI/UX
@@ -38,45 +35,43 @@ This project was implemented using React and following packeges:
 
 ## Usage
 
-### User features
+### User Features
 
-- Registration and login (account verification with email coming to your email address)
-  ```md
+- Registration and login (account verification via email)
+
   ![Login](assets/images/login.png)
   ![Register](assets/images/register.png)
-  ```
-- Games explore with sorting, pagination and search. Check game information and leave reviews.
-  ```md
+
+- Explore games with sorting, pagination, and search. Check game information and leave reviews.
+
   ![All Games](assets/images/main.png)
   ![Single Game](assets/images/single_game.png)
   ![Reviews](assets/images/reviews.png)
-  ```
-- Profile with updating information, favourite games and cart (order checkout with sending email with purchased keys).
-  ```md
+
+- Profile management, including updating information, viewing favorite games, and managing the cart (order checkout with email confirmation and purchased keys).
+
   ![Profile](assets/images/profile.png)
   ![Favourites](assets/images/favourites.png)
   ![Cart](assets/images/cart.png)
-  ```
 
-### Admin features
+### Admin Features
 
-- Dashboard with an access to user create, update, soft delete
-  ```md
-  ![Users Dachboard](assets/images/users_dashboard.png)
-  ```
-- Dashboard with an access to games create, update, add keys, soft delete
-  ```md
-  ![Games Dachboard](assets/images/games_dashboard.png)
-  ```
-- Dashboard with an access to orders statistics and users information
-  ```md
-  ![Games Dachboard](assets/images/orders_dashboard.png)
-  ```
+- Dashboard access to create, update, and soft delete users.
+
+  ![Users Dashboard](assets/images/users_dashboard.png)
+
+- Dashboard access to create, update, add keys, and soft delete games.
+
+  ![Games Dashboard](assets/images/games_dashboard.png)
+
+- Dashboard access to view order statistics and user information.
+
+  ![Orders Dashboard](assets/images/orders_dashboard.png)
 
 ## Credits
 
-Project was created by my own as an assignment to [Integrify Academy](https://www.integrify.io/)
+This project was created independently as an assignment for [Integrify Academy](https://www.integrify.io/).
 
 ## License
 
-This project was created for study purposes only. You can copy, edit and contribute to it. No commercial use.
+This project was created for educational purposes only. You are free to copy, edit, and contribute to it. No commercial use is allowed.
