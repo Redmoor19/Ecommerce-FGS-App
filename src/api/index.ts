@@ -7,7 +7,7 @@ let baseURL = "http://localhost:8080/api/v1"
 
 if (!isDevelopment) {
   // Update this later when you have a working backend server
-  baseURL = "https://fs18-java-backend.onrender.com"
+  baseURL = "https://fs18-java-backend.onrender.com/api/v1"
 }
 
 const api = axios.create({
