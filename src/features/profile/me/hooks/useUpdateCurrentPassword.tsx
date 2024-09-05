@@ -8,11 +8,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 const useUpdateCurrentPassword = () => {
   const queryClient = useQueryClient()
   const { toast } = useToast()
-  const { login } = useAuthContext()
+  const { logout } = useAuthContext()
   const { mutate, isPending } = useMutation({
     mutationFn: (data: UpdatePassword) => updateLoggedUserPassword(data),
-    onSuccess: (resData) => {
-      login(resData)
+    onSuccess: () => {
+      logout()
       queryClient.invalidateQueries({ queryKey: ["user"] })
       toast({
         title: "Updated"

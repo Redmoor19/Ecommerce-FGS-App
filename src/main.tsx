@@ -8,7 +8,17 @@ import "@smastrom/react-rating/style.css"
 import { AuthContextProvider } from "./context/authContext"
 import { DarkContextProvider } from "./context/darkThemeContext"
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      gcTime: 10 * 60 * 1000,
+      refetchOnWindowFocus: false,
+      retry: 1,
+      refetchOnReconnect: true
+    }
+  }
+})
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <QueryClientProvider client={queryClient}>
