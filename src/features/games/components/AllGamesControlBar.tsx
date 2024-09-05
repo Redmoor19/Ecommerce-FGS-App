@@ -10,7 +10,7 @@ const AllGamesControlBar = () => {
   const { playerSupport } = useGetPlayerSupport()
 
   return (
-    <div className="flex flex-col gap-3 md:gap-0">
+    <div className="flex flex-col gap-2">
       <GameSearchInput />
       <div className="flex items-start flex-col md:gap-3 md:items-center md:flex-row">
         <GameSortBy options={sortOptions} />
