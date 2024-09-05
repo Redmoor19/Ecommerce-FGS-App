@@ -15,8 +15,7 @@ const useGetCart = () => {
     refetch
   } = useQuery<Order, ApiError>({
     queryFn: getCart,
-    queryKey: ["cart"],
-    retry: (failureCount, error) => (error.status === 404 && failureCount <= 3 ? true : false)
+    queryKey: ["cart"]
   })
 
   if (cart && user && cart.userId !== user.id) {
