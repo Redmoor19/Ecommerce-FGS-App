@@ -6,6 +6,7 @@ import useUpdateCurrentPassword from "../hooks/useUpdateCurrentPassword"
 import useAuthContext from "@/context/authContext"
 import { Loader } from "lucide-react"
 import IsUserVerified from "./IsUserVerified"
+import DeleteMe from "./DeleteMe"
 
 const User = () => {
   const { user, isLoading } = useAuthContext()
@@ -42,6 +43,7 @@ const User = () => {
             submitHandler={updatePasswordHandler}
             isUpdating={pendingPassword}
           />
+          <DeleteMe clasName="mt-5 ml-auto mr-2 block" />
         </div>
       </div>
     </div>
