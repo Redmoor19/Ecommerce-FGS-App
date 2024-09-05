@@ -1,14 +1,14 @@
-import Loader from "@/components/Loader"
 import useGetPopularGames from "../hooks/useGetPopularGames"
 import ErrorDisplay from "@/components/ErrorDisplay"
 import { ApiError } from "@/api/apiError"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { Link } from "react-router-dom"
+import PopularGamesSkeleton from "./PopularGamesSkeleton"
 
 const PopularGames = () => {
   const { popularGames, isLoading, error } = useGetPopularGames()
-  if (isLoading) return <Loader />
+  if (isLoading) return <PopularGamesSkeleton />
   if (error) return <ErrorDisplay error={error as ApiError} />
   if (!popularGames) return <ErrorDisplay error={new ApiError("Something went very wrong", 500)} />
 

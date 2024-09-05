@@ -1,13 +1,13 @@
 import GamesPagination from "@/components/GamesPagination"
 import useGetActiveGames from "../hooks/useGetActiveGames"
 import GameCard from "./GameCard"
-import Loader from "@/components/Loader"
 import ErrorDisplay from "@/components/ErrorDisplay"
 import { ApiError } from "@/api/apiError"
+import AllGamesSkeleton from "./AllGamesSkeleton"
 
 const AllGamesGrid = () => {
   const { activeGames, isLoading, error } = useGetActiveGames()
-  if (isLoading) return <Loader />
+  if (isLoading) return <AllGamesSkeleton />
   if (error) return <ErrorDisplay error={error as ApiError} />
   if (!activeGames) return <ErrorDisplay error={new ApiError("Something went very wrong", 500)} />
 
