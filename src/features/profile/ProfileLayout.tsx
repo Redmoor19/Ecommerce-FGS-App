@@ -6,10 +6,11 @@ import { useEffect } from "react"
 
 const ProfileLayout = () => {
   const navigate = useNavigate()
-  const { isLogged, isLoading } = useAuthContext()
+  const { isLogged, isLoading, token } = useAuthContext()
 
   useEffect(() => {
     const canSee = checkPermisson("USER", "PROFILE:VIEW", "view")
+    if (!token) navigate("/")
     if ((!canSee || !isLogged) && !isLoading) navigate("/")
   }, [isLogged, isLoading])
 

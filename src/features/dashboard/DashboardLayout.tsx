@@ -6,10 +6,11 @@ import { useEffect } from "react"
 
 const DashboardLayout = () => {
   const navigate = useNavigate()
-  const { role, isLogged, isLoading } = useAuthContext()
+  const { role, isLogged, isLoading, token } = useAuthContext()
   const isAdmin = role === "ADMIN" && isLogged
   useEffect(() => {
     const canSee = checkPermisson("ADMIN", "DASHBOARD:VIEW", "view")
+    if (!token) navigate("/")
     if ((!canSee || !isAdmin) && !isLoading) navigate("/")
   }, [isLogged, isAdmin, isLoading])
 

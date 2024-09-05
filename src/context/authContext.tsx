@@ -13,6 +13,7 @@ const authContext = createContext(
     isLogged: boolean
     isLoading: boolean
     isUnverified: boolean
+    token: string
   }
 )
 
@@ -38,7 +39,9 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
   const isUnverified = user?.activeStatus === "UNVERIFIED"
 
   return (
-    <authContext.Provider value={{ login, logout, user, role, isLogged, isLoading, isUnverified }}>
+    <authContext.Provider
+      value={{ login, logout, user, role, isLogged, isLoading, isUnverified, token }}
+    >
       {children}
     </authContext.Provider>
   )

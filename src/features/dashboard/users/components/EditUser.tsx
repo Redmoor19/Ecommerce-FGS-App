@@ -21,7 +21,7 @@ const EditUser = ({ user, children }: EditUserProps) => {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent aria-describedby={undefined}>
+      <SheetContent className="overflow-y-auto" aria-describedby={undefined}>
         <SheetHeader>
           <SheetTitle>
             <span className="text-primary">Edit user</span>
