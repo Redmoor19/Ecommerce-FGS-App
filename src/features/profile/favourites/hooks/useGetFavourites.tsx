@@ -10,8 +10,7 @@ const useGetFavourites = () => {
     error
   } = useQuery<Game[], ApiError>({
     queryKey: ["favourites"],
-    queryFn: getFavourites,
-    retry: (failureCount, error) => (error.status === 404 && failureCount <= 3 ? true : false)
+    queryFn: getFavourites
   })
 
   function isFavourite(gameId: string): boolean {
