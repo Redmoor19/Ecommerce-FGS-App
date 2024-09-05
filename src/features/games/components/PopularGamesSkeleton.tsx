@@ -6,7 +6,10 @@ const PopularGamesSkeleton = () => {
       <h2 className="text-center text-3xl bg-gradient text-transparent bg-clip-text ">
         Most popular games last month
       </h2>
-      <div className="flex justify-center  gap-5 items-center ">
+      <div className="flex md:hidden justify-center gap-5 items-center ">
+        <Skeleton className="h-[50vh] aspect-[9/14]" />
+      </div>
+      <div className="hidden md:flex justify-center gap-5 items-center ">
         {Array.from({ length: 3 }).map((_, i) => (
           <Skeleton className="h-[50vh] aspect-[9/14]" key={i} />
         ))}
