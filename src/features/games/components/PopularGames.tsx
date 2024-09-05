@@ -22,7 +22,7 @@ const PopularGames = () => {
   return (
     <section className="container flex justify-center items-center py-20">
       <div className="w-1/2">
-        <h2 className="text-center text-3xl bg-gradient text-transparent bg-clip-text ">
+        <h2 className="text-center text-3xl bg-gradient text-transparent bg-clip-text pb-5">
           Most popular games last month
         </h2>
         <Carousel
@@ -39,7 +39,7 @@ const PopularGames = () => {
               >
                 <Link to={`/games/${game.id}`} className="py-5 px-1">
                   <img
-                    className="aspect-[9/14] object-cover h-80 md:h-96 shadow-lg shadow-primary/20"
+                    className="aspect-[9/14] object-cover h-70 md:h-80 2xl:h-96 shadow-lg shadow-primary/20"
                     src={game.thumbnail}
                     alt={`${game.name} thumb`}
                   />
