@@ -1,8 +1,11 @@
 # Fake Game Store App
 
+[Link to hosting](https://fs18-java-frontend.vercel.app/games)
+Backend is going to sleep after short period of time, so first request takes about a minute.
+
 ## Description
 
-This project is a frontend assignment for the Integrify Academy Full Stack course. The task was to create an e-commerce website, and a game key store was chosen for this purpose. This project only works with the [backend](https://github.com/Redmoor19/fs18_java_backend). Fake Game Store is a non-profit educational project with no actual products. All data is mocked, and keys are generated using UUID.
+This project is a frontend assignment for the Integrify Academy Full Stack course. The task was to create an e-commerce website, and a game key store was chosen for this purpose. This project only works with the [backend](https://github.com/Redmoor19/Ecommerce-backend). Fake Game Store is a non-profit educational project with no actual products. All data is mocked, and keys are generated using UUID.
 
 During this project, I learned how to build a complex e-commerce React application with server state, authentication, and role-based access. The tight deadlines for the assignment helped me hone the skill of producing good code within a limited time. The UI was implemented using [Shadcn/UI](https://ui.shadcn.com/). Usage and features are listed below.
 
@@ -27,6 +30,7 @@ During this project, I learned how to build a complex e-commerce React applicati
 This project was implemented using React and the following packages:
 
 - [Axios](https://www.npmjs.com/package/axios) for fetching data from the server
+- [TanStack Query](https://tanstack.com/query/latest)
 - [Shadcn/UI](https://ui.shadcn.com/) for UI/UX
 - [React-Router-Dom](https://reactrouter.com/en/main) for routing
 - [TailwindCss](https://tailwindcss.com/) for styling
